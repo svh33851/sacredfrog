@@ -1,0 +1,513 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* -- BASE STYLES -- Most of these are inherited from Base, but I want to change a few. */
+
+
+body {
+	font-family: 'Cardo', serif; 
+	line-height: 1.4em;
+}
+
+a:link {
+  text-decoration: none;
+  font-weight:700;
+}
+
+a:visited {
+  text-decoration: none;
+  font-weight:700;
+}
+
+a:hover {
+  text-decoration: underline;
+  font-weight:700;
+}
+
+a:active {
+  text-decoration: underline;
+  font-weight:700;
+}
+
+/* FONTS */
+
+@font-face {
+	font-family: 'Vinque';
+	src: url('vinque.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cardo';
+    src: url('fonts/Cardo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cardo';
+    src: url('fonts/Cardo-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+p {
+	font-family: 'Cardo', serif; 
+	color: #241F1C;
+	line-height: 1.4em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align:center;
+	font-family: 'Vinque', serif;
+	font-weight: 400;
+	line-height:1.3em;
+	color: #241F1C;
+	margin:0;
+}
+
+.white-text {
+	color:#F7E7D3;
+	font-weight:700;
+	text-shadow: 0px 0px 7px rgba(0, 0, 0, 1);
+}
+
+/* BUTTONS */
+
+.pure-menu-link {
+	font-family: 'Vinque', serif;
+	color: #F8EEE5;
+	text-shadow: 0px 0px 8px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 1);
+	background:none;
+}
+.pure-menu-link:hover {
+	color:white;
+	background:none;
+}
+
+.btn {
+    background: #EB3C3C;
+    background-image: linear-gradient(to bottom, #EB3C3C, #850202);
+    text-shadow: 0px 0px 7px #000000;
+    box-shadow: 0px 0px 11px #666666;
+    font-family: Vinque, sans-serif;
+    color: #F8EEE5;
+    border-radius: clamp(10px, 1.3vw, 18px); /* Adjusts based on screen width */
+    padding: clamp(6px, 0.7vw, 12px) clamp(12px, 2vw, 23px); /* Responsive padding */
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #D82C2C;
+    background-image: linear-gradient(to bottom, #D82C2C, #6D0000);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-gold {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn-gold img {
+
+
+}
+
+.btn-gold:hover img {
+    transform: scale(1.1);
+}
+
+
+
+/* AUTOSCROLL BANNER */
+        /* Container for scrolling effect */
+        .scroll-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        /* Scrolling wrapper with images */
+        .scrolling-wrapper {
+            display: flex;
+            width: 200%; /* Double the width to fit two images side by side */
+            animation: scroll 12s linear infinite;
+        }
+
+        /* Scroll animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Image style */
+        .scrolling-wrapper img {
+            width: 50%; /* Each image takes half of the scrolling-wrapper */
+            height: auto;
+        }
+
+/* GOLDEN TEXT */
+.golden-text {
+	font-family: 'Vinque';
+	font-weight: 500;
+	text-align: center;
+	background: -webkit-linear-gradient(90deg, #CB8D49, #fff, #FFFFCA, #CB8D49);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(0px 1px 8px #1f1f1f);
+}
+
+/* TEXT BOX */
+.text-box {
+	background: #E8BD84;
+	background-image: linear-gradient(to bottom, #E8BD84, #F7EAC8);
+	border-radius: 15px;
+	box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.7);
+	font-family: 'Cardo', serif; 
+	color: #241F1C;
+	line-height: 1.4;
+	padding: 4% 5%;
+	margin:6% 3%;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* PRAYER TEXT BOX */
+.prayer {
+	background: #1C2846;
+	background-image: linear-gradient(to bottom, #1C2846, #11275E);
+	border-radius: 15px;
+	box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.7);
+	font-family: "Twemoji Country Flags", "Cardo", serif;
+	line-height: 1.6;
+	padding: 2% 3%;
+	margin:4% 0%;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-weight:700;
+	color: #F7E7D3;
+	text-shadow: 0px 0px 7px #000000;
+}
+.prayer span {
+	background: #241F1C;
+	border-radius: 10px;
+	padding: 0.2em 0.5em;
+	text-shadow:none;
+	white-space:no-wrap;
+}
+
+/* KANBAN TEXT BOX */
+.kb {
+	background: #F7EAC7;
+
+	border-radius: 10px;
+	box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2);
+	font-family: "Twemoji Country Flags", "Cardo", serif;
+	line-height: 1.6;
+	padding: 2% 3%;
+	margin:5% 0%;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #241F1C;
+}
+.kb span {
+	background: #E8BE85;
+	border-radius: 10px;
+	font-size: 0.7em;
+
+	padding: 0.2em 0.5em;
+	text-shadow:none;
+	white-space:no-wrap;
+}
+
+.stpepe-home {
+	margin-top: calc(-150px - 12%);
+}
+
+/* CENTERED VERTICALLY */
+.centered {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center;    /* Vertical centering */
+}
+
+/* STYLE FOR FORMS */
+.input {
+  width: 100%; /* Full width */
+  padding: 10px; /* Inner spacing */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box; /* Ensure padding doesn't affect total width */
+}
+
+input[type="checkbox"] {
+  width: 1.2em; /* Set width */
+  height: 1.2em; /* Set height */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  accent-color: #007bff; /* Change the checkbox color in modern browsers */
+}
+
+/* SCROLLBAR */
+/* For WebKit Browsers */
+::-webkit-scrollbar {
+	width: 1.5vw;
+	height: 1.2vh;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #CB8D49, #FFFFCA, #CB8D49); /* Gradient from lighter to darker red */
+}
+::-webkit-scrollbar-track {
+    background: #51020A;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #CB8D49, #FFFFCA, #CB8D49); /* Slightly lighter gradient on hover */
+}
+
+
+
+/* FLAGS */
+.flag {
+    width: 2vw; /* Adjust size as needed */
+    min-width: 25px;
+    max-width:42px;
+    height: auto;
+    margin-right: 0.5em; /* Space between flag and text */
+    vertical-align: middle; /* Align icon with text */
+}
+
+/* SANDWICH MENU */
+
+/* Basic styles */
+.menu-wrapper {
+    position: relative;
+}
+
+.menu-toggle-checkbox {
+    display: none;
+}
+
+.menu-toggle-label {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    color: #F8EEE5;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 1);
+}
+
+/* Horizontal menu on larger screens */
+.pure-menu-horizontal .pure-menu-list {
+    display: flex;
+    justify-content: flex-end; /* Align menu to the right */
+}
+
+/* Ensure the button size remains around the text */
+.pure-menu-link.btn {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+}
+
+.pure-menu-horizontal .pure-menu-item {
+    position: relative;
+}
+
+.pure-menu-has-children .pure-menu-children {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px 0;
+    -webkit-box-shadow: 0px 1px 8px #000000;
+    -moz-box-shadow: 0px 1px 8px #000000;
+    box-shadow: 0px 1px 8px #000000;
+}
+
+.pure-menu-has-children:hover .pure-menu-children {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 767px) {
+    .menu-toggle-label {
+        display: block;
+    }
+    .menu {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+    .menu-toggle-checkbox:checked + .menu-toggle-label + .menu {
+        max-height: 500px; /* Adjust as needed to allow for menu height */
+        opacity: 1;
+        visibility: visible;
+    }
+    .pure-menu-horizontal .pure-menu-list {
+        flex-direction: column;
+    }
+    .pure-menu-item {
+        text-align: center;
+        width: 100%;
+    }
+    .pure-menu-has-children .pure-menu-children {
+        position: static;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 15px 15px 15px 15px;
+        box-shadow: none;
+        padding: 0;
+    }
+    .btn-buy {
+		margin: 0.5em 0 0.5em 0;
+    }
+    .stpepe-home {
+		margin-top: 0;
+		margin-bottom: -20%; 
+		position:relative;
+		z-index:-200;
+		padding: 0 6%;
+	}
+	#text-box-mobile {
+		margin-top:-37%;
+		margin-bottom:37%;
+	}
+}
+
+/* GENERAL MEDIA QUERIES */
+
+/* Extra Small (sm): less than 568px */
+@media (max-width: 568px) { 
+/*
+    body {background-color: yellow;}
+*/
+		p {font-size: 14px;}
+		h1 {font-size: 26px;}
+		h2 {font-size: 18px;}
+		td {font-size: 14px;}
+		.text-box {font-size: 14px;}
+		.distro {font-size: 14px;}
+		.pure-menu-link {font-size: 15px;}
+		.section {padding:4% 2%;}
+		.mobile {visibility: visible;}
+		.desktop {visibility: hidden;}
+} 
+  
+/* Small (md): 568px to 768px */
+@media (min-width: 568px) and (max-width: 768px) { 
+/*
+    body {background-color: rgb(234, 6, 204);} 
+*/
+		p {font-size: 16px;}
+		h1 {font-size: 38px;}
+		h2 {font-size: 20px;}
+		td {font-size: 16px;}
+		.text-box {font-size: 16px;}
+		.distro {font-size: 16px;}
+		.pure-menu-link {font-size: 16px;}
+		.section {padding:4% 4%;}
+		.mobile {visibility: visible;}
+		.desktop {visibility: hidden;}
+}
+  
+/* Medium (lg): 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) { 
+/*
+    body {background-color: rgb(13, 190, 234);} 
+*/
+		p {font-size: 15px;}
+		h1 {font-size: 45px;}
+		h2 {font-size: 28px;}
+		td {font-size: 18px;}
+		.text-box {font-size: 17px;}
+		.distro {font-size: 17px;}
+		.pure-menu-link {font-size: 17px;}
+		.section {padding:6% 6% 8% 6%;}
+		.mobile {visibility: hidden;}
+		.desktop {visibility: visible;}
+}
+
+/* Large (xl): 1024px to 1280px */
+@media (min-width: 1024px) and (max-width: 1280px)  { 
+/*
+    body {background-color: lightgreen;}
+*/
+		p {font-size: 15px;}
+		h1 {font-size: 50px;}
+		h2 {font-size: 30px;}
+		td {font-size: 20px;}
+		.text-box {font-size: 16px;}
+		.distro {font-size: 16px;}
+		.pure-menu-link {font-size: 19px;}
+		.section {padding:4% 9%;}
+		.mobile {visibility: hidden;}
+		.desktop {visibility: visible;}
+}
+
+/* Extra Large (xxl): 1280px to 1920px */
+@media (min-width: 1280px) and (max-width: 1920px)  { 
+/*
+    body {background-color: pink;} 
+*/
+		p {font-size: 18px;}
+		h1 {font-size: 55px;}
+		h2 {font-size: 35px;}
+		td {font-size: 24px;}
+		.text-box {font-size: 18px;}
+		.distro {font-size: 18px;}
+		.pure-menu-link {font-size: 22px;}
+		.section {padding:4% 13%;}
+		.mobile {visibility: hidden;}
+		.desktop {visibility: visible;}
+}
+
+/* Extra Extra Large (xxxl): 1920px to 2560px */
+@media (min-width: 1920px) and (max-width: 2560px)  { 
+/*
+    body {background-color: lightblue;} 
+*/
+		p {font-size: 22px;}
+		h1 {font-size: 60px;}
+		h2 {font-size: 38px;}
+		td {font-size: 28px;}
+		.text-box {font-size: 20px;}
+		.distro {font-size: 20px;}
+		.pure-menu-link {font-size: 24px;}
+		.section {padding:4% 17%;}
+		.mobile {visibility: hidden;}
+		.desktop {visibility: visible;}
+}
+
+/* 4K (x4k): above 2560px */
+@media (min-width: 2560px)  { 
+/*
+    body {background-color: lightcoral;} 
+*/
+		p {font-size: 24px;}
+		h1 {font-size: 70px;}
+		h2 {font-size: 42px;}
+		td {font-size: 32px;}
+		.text-box {font-size: 22px;}
+		.distro {font-size: 22px;}
+		.pure-menu-link {font-size: 28px;}
+		.section {padding:4% 20%;}
+		.mobile {visibility: hidden;}
+		.desktop {visibility: visible;}
+}

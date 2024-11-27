@@ -69,6 +69,19 @@
 		.stpepe-home:not(:defined) {
 			opacity: 1;
 		}
+
+		.section-home {
+			opacity: 0;
+			transition: opacity 0.1s ease-out;
+			display: block;
+		}
+
+		/* When the component is defined (fully loaded), make it visible */
+		.section-home:not(:defined) {
+			opacity: 1;
+		}
+
+		
 		@media (max-width: 767px) {
 			.stpepe-home {
 				margin-top: 0;

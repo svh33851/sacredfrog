@@ -253,9 +253,6 @@ h1, h2, h3, h4, h5, h6 {
 	white-space:no-wrap;
 }
 
-.stpepe-home {
-	margin-top: calc(-150px - 12%);
-}
 
 /* CENTERED VERTICALLY */
 .centered {
@@ -404,13 +401,6 @@ input[type="checkbox"] {
 	.btn-gold-div {
 		margin-top:-58% !important;
 		position:relative;
-	}
-    .stpepe-home {
-		margin-top: 0;
-		margin-bottom: -20%; 
-		position:relative;
-		z-index:-200;
-		padding: 0 6%;
 	}
 	#text-box-mobile {
 		margin-top:-37%;

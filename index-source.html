@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-	 <!-- Meta Tags -->
+	<!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A holy site for all NEETs, celebrating St. Pepe's financial miracle." />
@@ -11,10 +11,10 @@
     <meta name="keywords" content="saint pepe, st pepe, book of saint pepe, neet, crypto, memecoin, solana memecoin">
     <meta content="Ym9va29mc2FpbnRwZXBlLmNvbQ==" />
 
-	<link rel="preload" href="code/vinque.otf" as="font" type="font/otf" crossorigin="anonymous">
+	<link rel="preload" href="code/fonts/vinque.otf" as="font" type="font/otf" crossorigin="anonymous">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="code/style-min.css">
+    <link rel="stylesheet" href="code/css/style.css">
 
 	 <!-- Title -->
     <title>𝖘𝖙 𝖕𝖊𝖕𝖊&nbsp;&nbsp;✠&nbsp;&nbsp;𝖕𝖆𝖙𝖗𝖔𝖓 𝖘𝖆𝖎𝖓𝖙 𝖔𝖋 𝖆𝖑𝖑 𝖓𝖊𝖊𝖙𝖘</title>
@@ -660,9 +660,36 @@ document.getElementById('fetchButton').addEventListener('click', () => {
 });
 </script>
 
-<!--
-	<script src="code/breakpoints.js" defer></script>
--->
+<script>
+function updateBreakpoint() {
+	const display = document.getElementById('breakpointDisplay');
+	const width = window.innerWidth;
+	let size = '';
+
+	if (width < 568) {
+		size = 'pure-u-xs-* (xs)';
+	} else if (width >= 568 && width < 768) {
+		size = 'pure-u-sm-* (sm)';
+	} else if (width >= 768 && width < 1024) {
+		size = 'pure-u-md-* (md)';
+	} else if (width >= 1024 && width < 1280) {
+		size = 'pure-u-lg-* (lg)';
+	} else if (width >= 1280 && width < 1920) {
+		size = 'pure-u-xl-* (xl)';
+	} else if (width >= 1920 && width < 2560) {
+		size = 'pure-u-xxxl-* (xxxl)';
+	} else {
+		size = 'pure-u-x4k-* (x4k)';
+	}
+
+	display.textContent = `Width: ${width}px | Breakpoint: ${size}`;
+}
+
+// Update on page load
+window.onload = updateBreakpoint;
+// Update on window resize
+window.onresize = updateBreakpoint;
+</script>
 
 </body>
 </html>

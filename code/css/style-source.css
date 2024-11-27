@@ -306,7 +306,96 @@ input[type="checkbox"] {
     vertical-align: middle; /* Align icon with text */
 }
 
+/* SANDWICH MENU */
 
+/* Basic styles */
+.menu-wrapper {
+    position: relative;
+}
+
+.menu-toggle-checkbox {
+    display: none;
+}
+
+.menu-toggle-label {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    color: #F8EEE5;
+/*
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 1);
+*/
+}
+
+/* Horizontal menu on larger screens */
+.pure-menu-horizontal .pure-menu-list {
+    display: flex;
+    justify-content: flex-end; /* Align menu to the right */
+}
+
+/* Ensure the button size remains around the text */
+.pure-menu-link.btn {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+}
+
+.pure-menu-horizontal .pure-menu-item {
+    position: relative;
+}
+
+.pure-menu-has-children .pure-menu-children {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px 0;
+    -webkit-box-shadow: 0px 1px 8px #000000;
+    -moz-box-shadow: 0px 1px 8px #000000;
+    box-shadow: 0px 1px 8px #000000;
+}
+
+.pure-menu-has-children:hover .pure-menu-children {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 767px) {
+    .menu-toggle-label {
+        display: block;
+    }
+    .menu {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+    .menu-toggle-checkbox:checked + .menu-toggle-label + .menu {
+        max-height: 550px; /* Adjust as needed to allow for menu height */
+        opacity: 1;
+        visibility: visible;
+    }
+    .pure-menu-horizontal .pure-menu-list {
+        flex-direction: column;
+    }
+    .pure-menu-item {
+        text-align: center;
+        width: 100%;
+    }
+    .pure-menu-has-children .pure-menu-children {
+        position: static;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 15px 15px 15px 15px;
+        box-shadow: none;
+        padding: 0;
+    }
+}
 
 /* GENERAL MEDIA QUERIES */
 

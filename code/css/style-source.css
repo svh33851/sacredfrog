@@ -37,7 +37,7 @@ a:active {
 
 @font-face {
 	font-family: 'Vinque';
-	src: url('vinque.otf') format('opentype');
+	src: url('../fonts/vinque.otf') format('opentype');
 	font-weight: normal;
 	font-style: normal;
 }

@@ -121,10 +121,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform 0.3s ease;
 }
 
-.btn-gold img {
-
-}
-
 .btn-gold:hover img {
     transform: scale(1.1);
 }
@@ -384,6 +380,10 @@ input[type="checkbox"] {
     .btn-buy {
 		margin: 0.5em 0 0.5em 0;
     }
+	.btn-gold-div {
+		margin-top:-56% !important;
+		position:relative;
+	}
     .stpepe-home {
 		margin-top: 0;
 		margin-bottom: -20%; 

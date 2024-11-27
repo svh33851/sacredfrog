@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # Define paths
-HTML_FILE="index.html"
-CSS_FOLDER="code"
-OUTPUT_CSS="combined.min.css"
-OUTPUT_HTML="index.min.html"
+HTML_FILE="index-source.html"
+CSS_FOLDER="code/css"
+OUTPUT_CSS="code/css/style.css"
+OUTPUT_HTML="index.html"
 
 # Get the current timestamp (you can adjust the format as needed)
 TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
 
 # Step 1: Combine the CSS files into one temporary file
 echo "Combining CSS files..."
-cat "$CSS_FOLDER/pure-min.css" "$CSS_FOLDER/grids-responsive-min.css" "$CSS_FOLDER/style.css" > combined.css
+cat "$CSS_FOLDER/pure-min.css" "$CSS_FOLDER/grids-responsive-min.css" "$CSS_FOLDER/style-source.css" > combined.css
 
 # Verify the combined CSS file exists
 if [ -f combined.css ]; then
@@ -48,11 +48,12 @@ fi
 # Clean up the temporary combined CSS file
 rm combined.css
 
-# Step 4: Commit the changes to Git with a timestamped message
-echo "Committing changes to Git..."
-git add "$OUTPUT_CSS" "$OUTPUT_HTML"  # Add the output files
-git commit -m "Minified CSS and HTML files - Timestamp: $TIMESTAMP"
-
 echo "Process completed!"
 echo "Minified CSS: $OUTPUT_CSS"
 echo "Minified HTML: $OUTPUT_HTML"
+
+# Step 4: Commit the changes to Git with a timestamped message
+echo "Committing changes to Git..."
+git add .
+git commit -m "minified files $TIMESTAMP"
+

@@ -114,6 +114,26 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
 }
 
+.btn-normal {
+    background: #1E2D50; /* Azul oscuro discreto */
+    background-image: linear-gradient(to bottom, #1E2D50, #121B37);
+    text-shadow: none; /* Sin sombra en el texto */
+    font-family: Vinque, sans-serif;
+    color: #FFFFFF; /* Texto blanco para contraste */
+    border-radius: clamp(10px, 1.3vw, 20px); /* Mantén el diseño responsivo */
+    padding: clamp(6px, 0.7vw, 24px) clamp(12px, 2vw, 34px);
+    text-decoration: none;
+    border: none; /* Sin borde visible */
+}
+
+.btn-normal:hover {
+    background: #162545; /* Azul más oscuro al pasar el mouse */
+    background-image: linear-gradient(to bottom, #162545, #0D1428);
+    cursor: pointer;
+}
+
+
+
 .btn-gold {
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -305,7 +325,9 @@ input[type="checkbox"] {
     cursor: pointer;
     padding: 10px;
     color: #F8EEE5;
+/*
     text-shadow: 0px 0px 8px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 1);
+*/
 }
 
 /* Horizontal menu on larger screens */
@@ -379,7 +401,7 @@ input[type="checkbox"] {
 		margin: 0.5em 0 0.5em 0;
     }
 	.btn-gold-div {
-		margin-top:-56% !important;
+		margin-top:-58% !important;
 		position:relative;
 	}
     .stpepe-home {

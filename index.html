@@ -131,7 +131,7 @@
 	<div class="pure-g">
 
 		<div class="pure-u-1-1" style="text-align:center;">
-			<img loading="lazy" style="width: 32%; height: auto; min-width: 300px; max-width:550px; padding-top:calc(15px + 2%); margin-top:-2%;" src="images/logo-shadow.png">
+			<img loading="lazy" style="width: 32%; height: auto; min-width: 300px; max-width:737px; padding-top:calc(15px + 2%); margin-top:-2%;" src="images/logo-shadow.png">
 		</div>
 		<div class="pure-u-1-1 mobile" style="text-align:center;">
 			<a style="margin-top:-2%;margin-bottom:4%;" href="https://raydium.io/swap/?inputMint=sol&outputMint=Et63bkNtgp7nyvBMBxjKGBCjxet9Hrvm7qXpjnYSbKGh" class="pure-menu-link btn btn-buy">Buy Now</a>
@@ -154,7 +154,9 @@
 				<div class="pure-u-1-1">
 					<div>
 						<div class="text-box" id="text-box-mobile" style="z-index:200; position:relative;">
+<!--
 							<img loading="lazy" class="desktop" src="images/dec-cross-round.png" style="width: 3vw; height: auto; max-width: 90px; min-width:30px; margin: -4vw 0 0 40%;position:absolute;z-index:201;">
+-->
 							<p style="margin: -1% 0 0 0;">❝Blessed are the followers of <b>Saint Pepe</b>, for they shall receive <b>meme miracles</b>, find joy in simplicity, and be uplifted in unity.❞</p>
 						</div>
 					</div>
@@ -174,7 +176,7 @@
 	<div class="section">
 		<div class="pure-g">
 			<div class="pure-u-1">
-				<p style="text-align:center;"><img loading="lazy" src="images/dec-church.png" style="width: 40%; min-width: 260px; height: auto; max-width:500px; margin: 0 0 -2em 0;"></p>
+				<p style="text-align:center;"><img loading="lazy" src="images/dec-church.png" style="width: 40%; min-width: 260px; height: auto; max-width:768px; margin: 0 0 -2em 0;"></p>
 				<h1 class="golden-text" style="margin-bottom:-3%;">About</h1>
 			</div>
 
@@ -274,7 +276,7 @@
 <div id="prayer" class="section" style="background:#263760;">
 	<div class="pure-g">
 
-		<div class="pure-u-1  pure-u-lg-12-24">
+		<div class="pure-u-1 pure-u-lg-12-24">
 			<div style="padding:0 15% 0 0;">
 				<h2 class="golden-text" style="text-align:left;">Send your prayer</h2><br>
 
@@ -285,18 +287,15 @@
 					<span>&nbsp;I agree to the sacred terms</span>
 				</label>
 				<p style="text-align:right;">
-					<button id="submitButton" class="btn pure-menu-link" style="box-shadow: none; border:none;font-weight:700;">Send prayer</button>
+					<button id="submitButton" class="btn">Send prayer</button>
 				</p>
 			</div>
 		</div>
 
-
-
-		<div class="pure-u-1  pure-u-lg-12-24">
+		<div class="pure-u-1 pure-u-lg-12-24">
 			<div>
-				<hr>
 				<h2 class="golden-text" style="text-align:left;">Latest prayers</h2><br>
-				<button id="fetchButton" class="button" style="background-color: #28a745;">Fetch Prayers</button>
+				<p><button id="fetchButton" class="btn" style="background-color: #28a745;">Read the latest prayers</button></p>
 				<div class="prayers-list">
 					<ul id="prayersContainer"></ul>
 				</div>
@@ -474,12 +473,12 @@
 </div>
 
 <!-- SECTION: HOW TO BUY -->
-<div id="how" style="background-image: linear-gradient(to bottom, #101626, #18223A), url(images/backgrounds/xv2.png); background-blend-mode: overlay;  position:relative; z-index:2; margin-top:-1%; z-index:1000; box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.7);">
+<div id="how" style="background-image: linear-gradient(to bottom, #101626, #18223A), url(images/backgrounds/xv2.png); background-blend-mode: overlay;  position:relative; z-index:2; margin-top:-1%; z-index:1000;">
 
 	<div style="background-image: url(images/separator2.png); background-repeat: repeat-x; background-size: contain; height: 4.3vw; max-height: 70px; min-height: 30px; width: auto; box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.7);">
 	</div>
 
-	<div class="section">
+	<div class="section" style="padding-bottom:0;">
 		<div class="pure-g">
 			<div class="pure-u-1">
 				<p style="text-align:center;"><img loading="lazy" src="images/dec-chest.png" style="width: 15%; min-width: 80px; height: auto; max-width:216px; margin: 0 0 -2.5em 0;"></p>
@@ -576,31 +575,32 @@
 				</div>
 			</div>
 
-			<div class="pure-u-1 pure-u-md-16-24">
-				<h2 class="golden-text" style="text-align:left;margin-top:4%;">Problems buying?</h2><br>
-				<p class="white-text">If you have any issues buying @SAINTPEPE, you can chat (via Telegram) with our Church Assistoor—a real human here to help! Please make sure to use the official link below, as there are many fake accounts impersonating us.<br><br>
-				<span style="font-size:0.7em;">Official Telegram Account:</span><br>
-				<span style="font-size:2em;">t.me/assistoor</span>
+			<div class="pure-u-1">
+				<div style="padding-right:40%;">
+					<h2 class="golden-text" style="text-align:left;margin-top:4%;">Problems buying?</h2><br>
+					<p class="white-text">Having trouble buying @SAINTPEPE? Chat with our real human Church Assistoor on Telegram for help! Use the official link below to avoid fake accounts.<br><br>
+					<span style="font-size:0.7em;">Official Telegram:</span><br>
+					<span style="font-size:1.5em;">t.me/ChurchAssistoor</span></p>
+				</div>
 			</div>
-			<div class="pure-u-1 pure-u-md-8-24">
-				<img loading="lazy" class="pure-img" style="float:right; margin: 10% 0 -26% 0; position: relative; width: 100%; heigth: auto;" src="images/assistoor.png">
+			<div class="pure-u-1">
+				<img loading="lazy" class="pure-img" style="float:right; margin-top:-28%; position: relative; width: 33%; heigth: auto;" src="images/assistoor.png">
 			</div>
-
-
 		</div>
-
 	</div>
 </div>
 
-<img loading="lazy" class="pure-img" style="position: relative; z-index:1000;width: 100%; height: auto; margin: -2% 0 0 0;" src="images/backgrounds/rough-top.png">
+<img loading="lazy" class="pure-img" style="position: relative; z-index:1000;width: 100%; height: auto; margin: -3% 0 0 0;" src="images/backgrounds/rough-top.png">
 </div>
 
-<!-- SECTION: SEND YOUR PRAYER -->
-<div id="prayer" class="section" style="background:#263760;">
+<!-- SECTION: Disclaimer -->
+<div id="disclaimer" class="section" style="background:#263760;">
 	<div class="pure-g">
 		<div class="pure-u-1 pure-u-lg-12-24">
 			<div style="padding:0 15% 0 0;">
-				<h2 class="golden-text" style="text-align:left;">Empty</h2><br>
+				<h2 class="golden-text" style="text-align:left;">Disclaimer</h2><br>
+				<p class="white-text">$SAINTPEPE (this Solana Token) has no association with Matt Furie or his creation Pepe the Frog. This token is simply paying homage to a meme we all love and recognize. $SAINTPEPE is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. the coin is completely useless and for entertainment purposes only.<br><br>
+				© 2024 BookOfSaintPepe.com. All rights reserved. Unauthorized copying is prohibited.</p>
 			</div>
 		</div>
 
@@ -614,22 +614,29 @@
 <!-- SECTION: FOOTER -->
 <div id="footer" style="background-image: linear-gradient(to bottom, #241F1C, #000000), url(images/backgrounds/xv2.png); background-blend-mode: overlay;  position:relative; z-index:2; margin-top:-3%; z-index:1000;">
 
-
 	<div class="section" style="padding-bottom:2%;">
 		<div class="pure-g">
-			<div class="pure-u-8-24">
-				<img loading="lazy" style="width: 30%; height: auto; min-width: 200px; max-width:550px; padding-top:calc(15px + 2%); margin-top:-2%;" src="images/logo-10.png">
+			<div class="pure-u-1 pure-u-md-8-24">
+				<img loading="lazy" style="width: 100%; height: auto; min-width: 150px; max-width:576px; padding-top:calc(15px + 2%); margin-top:-2%;" src="images/logo-10.png">
 			</div>
-			<div class="pure-u-16-24">
-				<p class="white-text">$SAINTPEPE (this Solana Token) has no association with Matt Furie or his creation Pepe the Frog. This token is simply paying homage to a meme we all love and recognize. $SAINTPEPE is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. the coin is completely useless and for entertainment purposes only.<br><br>
-				© 2024 BookOfSaintPepe.com. All rights reserved. Unauthorized copying is prohibited.</p>
+			<div class="pure-u-sm-12-24 pure-u-md-8-24">
+				<p class="white-text">Telegram</p>
+				<p class="white-text">Twitter</p>
+				<p class="white-text">TikTok</p>
+				<p class="white-text">Instagram</p>
+				<p class="white-text">Media Kit</p>
+			</div>
+			<div class="pure-u-sm-12-24 pure-u-md-8-24">
+				<p class="white-text">DexTools</p>
+				<p class="white-text">Dex Screener</p>
+				<p class="white-text">Raydium</p>
+				<p class="white-text">Jupiter</p>
 			</div>
 
 		</div>
 
 	</div>
 </div>
-
 
 	<!-- Current size and breakpoints indicator -->
 	<div class="breakpoint-display" id="breakpointDisplay">Current Size: </div>

@@ -9,28 +9,30 @@
 
 
 body {
-	font-family: 'Cardo', serif; 
+	font-family: Georgia, serif; 
 	line-height: 1.4em;
 }
 
 a:link {
   text-decoration: none;
-  font-weight:700;
+
 }
 
 a:visited {
   text-decoration: none;
-  font-weight:700;
+
 }
 
 a:hover {
+/*
   text-decoration: underline;
-  font-weight:700;
+*/
+  text-decoration: none;
 }
 
 a:active {
   text-decoration: underline;
-  font-weight:700;
+
 }
 
 /* FONTS */
@@ -42,22 +44,24 @@ a:active {
 	font-style: normal;
 }
 
+/*
 @font-face {
     font-family: 'Cardo';
-    src: url('fonts/Cardo-Regular.ttf') format('truetype');
+    src: url('Cardo-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Cardo';
-    src: url('fonts/Cardo-Bold.ttf') format('truetype');
+    src: url('Cardo-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
+*/
 
 p {
-	font-family: 'Cardo', serif; 
+	font-family: Georgia, serif; 
 	color: #241F1C;
 	line-height: 1.4em;
 }
@@ -102,7 +106,6 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: clamp(10px, 1.3vw, 20px); /* Adjusts based on screen width */
     padding: clamp(6px, 0.7vw, 24px) clamp(12px, 2vw, 34px); /* Responsive padding */
     text-decoration: none;
-	font-weight:700;
 	border:none;
 }
 
@@ -176,7 +179,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-image: linear-gradient(to bottom, #E8BD84, #F7EAC8);
 	border-radius: 15px;
 	box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.7);
-	font-family: 'Cardo', serif; 
+	font-family: Georgia, serif; 
 	color: #241F1C;
 	line-height: 1.4;
 	padding: 4% 5%;
@@ -192,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-image: linear-gradient(to bottom, #1C2846, #11275E);
 	border-radius: 15px;
 	box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.7);
-	font-family: "Twemoji Country Flags", "Cardo", serif;
+	font-family: Georgia, serif;
 	line-height: 1.6;
 	padding: 2% 3%;
 	margin:4% 0%;
@@ -217,7 +220,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	border-radius: 10px;
 	box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2);
-	font-family: "Twemoji Country Flags", "Cardo", serif;
+	font-family: Georgia, serif;
 	line-height: 1.6;
 	padding: 2% 3%;
 	margin:5% 0%;
@@ -396,81 +399,81 @@ input[type="checkbox"] {
 
 /* GENERAL MEDIA QUERIES */
 
-/* Extra Small (sm): less than 568px */
+/* Extra Small (xs): less than 568px */
 @media (max-width: 568px) { 
 /*
     body {background-color: yellow;}
 */
-		p {font-size: 14px;}
-		h1 {font-size: 26px;}
-		h2 {font-size: 18px;}
+		p, input, label, .btn {font-size: 14px;}
+		h1 {font-size: 36px;}
+		h2 {font-size: 20px;}
 		.text-box {font-size: 14px;}
 		.distro {font-size: 14px;}
-		.pure-menu-link {font-size: 15px;}
+		.pure-menu-link {font-size: 18px;}
 		.section {padding:4% 2%;}
 		.mobile {visibility: visible;}
 		.desktop {visibility: hidden;}
 } 
   
-/* Small (md): 568px to 768px */
+/* Small (sm): 568px to 768px */
 @media (min-width: 568px) and (max-width: 768px) { 
 /*
     body {background-color: rgb(234, 6, 204);} 
 */
-		p {font-size: 16px;}
-		h1 {font-size: 38px;}
-		h2 {font-size: 20px;}
+		p, input, label, .btn {font-size: 16px;}
+		h1 {font-size: 40px;}
+		h2 {font-size: 28px;}
 		.text-box {font-size: 16px;}
 		.distro {font-size: 16px;}
-		.pure-menu-link {font-size: 16px;}
+		.pure-menu-link {font-size: 20px;}
 		.section {padding:4% 4%;}
 		.mobile {visibility: visible;}
 		.desktop {visibility: hidden;}
 }
   
-/* Medium (lg): 768px to 1024px */
+/* Medium (md): 768px to 1024px */
 @media (min-width: 768px) and (max-width: 1024px) { 
 /*
     body {background-color: rgb(13, 190, 234);} 
 */
-		p {font-size: 15px;}
+		p, input, label, .btn {font-size: 16px;}
 		h1 {font-size: 45px;}
 		h2 {font-size: 28px;}
-		.text-box {font-size: 17px;}
-		.distro {font-size: 17px;}
-		.pure-menu-link {font-size: 17px;}
-		.section {padding:6% 6% 8% 6%;}
+		.text-box {font-size: 16px;}
+		.distro {font-size: 16px;}
+		.pure-menu-link {font-size: 19px;}
+		.section {padding:4% 6%;}
 		.mobile {visibility: hidden;}
 		.desktop {visibility: visible;}
 }
 
-/* Large (xl): 1024px to 1280px */
+/* Large (lg): 1024px to 1280px */
 @media (min-width: 1024px) and (max-width: 1280px)  { 
 /*
     body {background-color: lightgreen;}
 */
-		p {font-size: 15px;}
+		p, input, label, .btn {font-size: 18px;}
 		h1 {font-size: 50px;}
 		h2 {font-size: 30px;}
-		.text-box {font-size: 16px;}
-		.distro {font-size: 16px;}
-		.pure-menu-link {font-size: 19px;}
+		.text-box {font-size: 18px;}
+		.distro {font-size: 18px;}
+		.pure-menu-link {font-size: 21px;}
 		.section {padding:4% 9%;}
 		.mobile {visibility: hidden;}
 		.desktop {visibility: visible;}
 }
 
-/* Extra Large (xxl): 1280px to 1920px */
+/* Extra Large (xl): 1280px to 1920px */
 @media (min-width: 1280px) and (max-width: 1920px)  { 
 /*
     body {background-color: pink;} 
 */
-		p {font-size: 18px;}
+		p, input, label, .btn {font-size: 22px;}
 		h1 {font-size: 55px;}
-		h2 {font-size: 35px;}
-		.text-box {font-size: 18px;}
-		.distro {font-size: 18px;}
-		.pure-menu-link {font-size: 22px;}
+		h2 {font-size: 38px;}
+		.text-box {font-size: 22px;}
+		.distro {font-size: 22px;}
+		.pure-menu-link {font-size: 24px;}
 		.section {padding:4% 13%;}
 		.mobile {visibility: hidden;}
 		.desktop {visibility: visible;}
@@ -481,7 +484,7 @@ input[type="checkbox"] {
 /*
     body {background-color: lightblue;} 
 */
-		p {font-size: 22px;}
+		p, input, label, .btn {font-size: 22px;}
 		h1 {font-size: 60px;}
 		h2 {font-size: 38px;}
 		.text-box {font-size: 20px;}

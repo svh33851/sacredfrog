@@ -15,6 +15,8 @@
 
 	<link rel="preload" href="code/fonts/vinque.otf" as="font" type="font/otf" crossorigin="anonymous">
 	<link rel="preload" href="images/stpepe-home.webp" as="image" type="image/webp">
+	<link rel="preload" href="images/bg-sky.webp" as="image" type="image/webp">
+
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="code/css/style.css">
@@ -55,7 +57,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
 
 	<style>
-		.stpepe-home {margin-top: calc(-150px - 12%);}
+		/* Ensure that hidden components are styled */
+		.stpepe-home {
+			margin-top: calc(-150px - 12%);
+			opacity: 0;
+			transition: opacity 0.5s ease-out;
+			display: block;
+		}
+
+		/* When the component is defined (fully loaded), make it visible */
+		.stpepe-home:not(:defined) {
+			opacity: 1;
+		}
 		@media (max-width: 767px) {
 			.stpepe-home {
 				margin-top: 0;
@@ -147,7 +160,10 @@
 	</div>
 
 <script>
-$(document).ready(function(){$(body).css('display','block')});
+  window.addEventListener('load', function() {
+      document.body.style.display = 'block'; // Make sure body is visible after full page load
+      document.querySelector('.stpepe-home').style.opacity = 1; // Show the specific element after load
+  });
 </script>
 
 	<div class="pure-g">

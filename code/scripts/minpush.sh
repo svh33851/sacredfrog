@@ -35,7 +35,7 @@ fi
 
 # Step 3: Minify the HTML and save it as the final output
 echo "Minifying HTML..."
-minify --html "$HTML_FILE" > "$OUTPUT_HTML"
+minify "$HTML_FILE" > "$OUTPUT_HTML"  # Removed --html flag to let minify detect the file type
 
 # Verify if the HTML minification was successful
 if [ -f "$OUTPUT_HTML" ]; then
@@ -57,3 +57,4 @@ echo "Committing changes to Git..."
 git add .
 git commit -m "minified files $TIMESTAMP"
 
+echo "Now execute 'git push origin main'"

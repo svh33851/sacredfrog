@@ -630,254 +630,201 @@
 </div>
 
 <div class="pure-g" style="text-align:center;">
-	<div class="pure-u-1">
+    <div class="pure-u-1">
+        <style>
+            /* Floating button */
+            #floating-button {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                z-index: 9998 !important;
+            }
 
+            #floating-button:hover {
+                background-color: #0056b3;
+            }
 
-	<style>
-        /* Floating button */
-        #floating-button {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 9998 !important;
-        }
+            /* Popup music player */
+            #music-player {
+                position: fixed;
+                bottom: 40px;
+                left: 30px;
+                width: 268px;
+                height: 268px;
+                background-image: url(images/orig/bg-player-2.png);
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                display: none;
+                flex-direction: column;
+            }
 
-        #floating-button:hover {
-            background-color: #0056b3;
-        }
+            #music-player-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
 
-        /* Popup music player */
-        #music-player {
-            position: fixed;
-            bottom: 40px;
-            left: 30px;
-            width: 268px;
-            height: 268px;
-            background-image: url(images/orig/bg-player-2.png);
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-<!--
-            padding: 5px;
--->
-        }
+            #music-player-header h3 {
+                margin: 0;
+                font-size: 18px;
+            }
 
-        #music-player-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+            #minimize-button {
+                background-color: transparent;
+                border: none;
+                color: #007BFF;
+                font-size: 20px;
+                cursor: pointer;
+            }
 
-        #music-player-header h3 {
-            margin: 0;
-            font-size: 18px;
-        }
+            #playlist ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
 
-        #minimize-button {
-            background-color: transparent;
-            border: none;
-            color: #007BFF;
-            font-size: 20px;
-            cursor: pointer;
-        }
+            #playlist li {
+                cursor: pointer;
+                padding: 5px;
+                margin: 5px;
+                background-color: #f4f4f4;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                transition: background-color 0.2s;
+            }
 
-        #playlist ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
+            #playlist li:hover {
+                background-color: #ddd;
+            }
 
-        #playlist li {
-            cursor: pointer;
-            padding: 5px;
-            margin: 5px;
-            background-color: #f4f4f4;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: background-color 0.2s;
-        }
+            button {
+                padding: 10px 15px;
+                margin: 5px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
 
-        #playlist li:hover {
-            background-color: #ddd;
-        }
+            button:hover {
+                background-color: #0056b3;
+            }
 
-        button {
-            padding: 10px 15px;
-            margin: 5px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+            progress {
+                width: 100%;
+                height: 10px;
+            }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+            /* Make popup player always on top */
+            #music-player {
+                z-index: 9999;
+            }
+        </style>
 
-        progress {
-            width: 100%;
-            height: 10px;
-        }
+        <!-- Floating Button -->
+        <button id="floating-button">🎵</button>
 
-        /* Make popup player always on top */
-        #music-player {
-            z-index: 9999;
-        }
+        <!-- Popup Music Player -->
+        <div id="music-player">
+            <div id="music-player-header">
+                <h3>Music Player</h3>
+                <button id="minimize-button">-</button>
+            </div>
 
-		/* The following is to frame the player */
-		.frame-container {
-		  position: relative; /* Enables positioning for child elements */
-		  width: 268px; /* Same width as your div */
-		  height: 268px; /* Same height as your div */
-		}
+            <!-- Playlist -->
+            <div id="playlist">
+                <ul>
+                    <li amplitude-song-index="0">Song 1 - Artist 1</li>
+                    <li amplitude-song-index="1">Song 2 - Artist 2</li>
+                    <li amplitude-song-index="2">Song 3 - Artist 3</li>
+                </ul>
+            </div>
 
-		.content {
-		  position: absolute; /* Aligns with the container */
-		  top: 0;
-		  left: 0;
-		  width: 100%;
-		  height: 100%;
-		  z-index: 1; /* Keeps it below the frame */
-		  margin-top:-10px;
-		  padding: 0px 10px; /* Optional padding inside the div */
-		  box-sizing: border-box;
-		  overflow: hidden; /* Prevents content from spilling outside */
-		}
+            <!-- Player Controls -->
+            <div id="player">
+                <progress class="amplitude-song-played-progress" id="song-progress"></progress>
 
-		.frame-overlay {
-		  position: absolute; /* Stacks over the content */
-		  top: -43px;
-		  left: -43px;
-		  width: 352px;
-		  height: 352px;
-		  z-index: 1002; /* Ensures the frame is on top */
-		  pointer-events: none; /* Allows clicking through to the content */
-		}
+                <!-- Buttons -->
+                <button class="amplitude-prev">Prev</button>
+                <button id="play-pause-btn" class="amplitude-play-pause">▶</button>
+                <button class="amplitude-next">Next</button>
+                <input type="range" class="amplitude-volume-slider" step="0.1" min="0" max="1"><br>
+                <button class="amplitude-shuffle">Shuffle</button>
+                <button class="amplitude-repeat">Repeat</button>
+            </div>
+        </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script>
+        <script>
+            // Initialize AmplitudeJS
+            Amplitude.init({
+                songs: [
+                    {
+                        name: "Miserere Mei",
+                        artist: "Gregorio Allegri",
+                        url: "songs/miserere-tim-oldham.mp3",
+                        cover_art_url: "path-to-cover-art3.jpg"
+                    },
+                    {
+                        name: "Dies Irae",
+                        artist: "Thomas of Celano of the Franciscans",
+                        url: "songs/dies-irae-apashe.mp3",
+                        cover_art_url: "path-to-cover-art1.jpg"
+                    },
+                    {
+                        name: "Miserere Mei Remix",
+                        artist: "Gregorio Allegri",
+                        url: "songs/miserere-mei-remix-soroosh-nematollahi.mp3",
+                        cover_art_url: "path-to-cover-art2.jpg"
+                    }
+                ],
+                shuffle_on: false,
+                repeat: false
+            });
 
+            // Toggle the music player visibility
+            const floatingButton = document.getElementById('floating-button');
+            const musicPlayer = document.getElementById('music-player');
+            const minimizeButton = document.getElementById('minimize-button');
+            const playPauseButton = document.getElementById('play-pause-btn');
 
-    </style>
+            floatingButton.addEventListener('click', () => {
+                musicPlayer.style.display = 'flex';
+                floatingButton.style.display = 'none';
+            });
 
-	<!-- Floating Button -->
-	<button id="floating-button">🎵</button>
+            minimizeButton.addEventListener('click', () => {
+                musicPlayer.style.display = 'none';
+                floatingButton.style.display = 'block';
+            });
 
+            // Update play/pause button icon based on state
+            Amplitude.bind('play', () => {
+                playPauseButton.textContent = '⏸'; // Pause icon
+            });
 
-
-	<!-- Popup Music Player -->
-	<div id="music-player">
-		<div class="frame-container">
-		  <div class="content">
-				<div id="music-player-header">
-					<h3>Music Player</h3>
-					<button id="minimize-button">-</button>
-				</div>
-
-				<!-- Playlist -->
-				<div id="playlist">
-					<ul>
-						<li amplitude-song-index="0">Song 1 - Artist 1</li>
-						<li amplitude-song-index="1">Song 2 - Artist 2</li>
-						<li amplitude-song-index="2">Song 3 - Artist 3</li>
-					</ul>
-				</div>
-
-				<!-- Player Controls -->
-				<div id="player">
-					<!-- Progress Bar -->
-					<progress class="amplitude-song-played-progress" id="song-progress"></progress>
-
-					<!-- Buttons -->
-					<button class="amplitude-prev">Prev</button>
-					<button id="play-pause-btn" class="amplitude-play-pause" amplitude-main-play-pause="true">▶</button>
-
-					<button class="amplitude-next">Next</button>
-					<input type="range" class="amplitude-volume-slider" step="0.1" min="0" max="1"><br>
-					<button class="amplitude-shuffle">Shuffle</button>
-					<button class="amplitude-repeat">Repeat</button>
-
-				</div>
-			</div>
-		</div>
-		<img src="images/orig/frame-player-2.png" alt="Painting Frame" class="frame-overlay" />
-	</div>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script>
-    <script>
-
-		// Initialize AmplitudeJS first
-		Amplitude.init({
-			songs: [
-				{
-					name: "Miserere Mei",
-					artist: "Gregorio Allegri",
-					url: "songs/miserere-tim-oldham.mp3",
-					cover_art_url: "path-to-cover-art3.jpg"
-				},
-				{
-					name: "Dies Irae",
-					artist: "Thomas of Celano of the Franciscans",
-					url: "songs/dies-irae-apashe.mp3",
-					cover_art_url: "path-to-cover-art1.jpg"
-				},
-				{
-					name: "Miserere Mei Remix",
-					artist: "Gregorio Allegri",
-					url: "songs/miserere-mei-remix-soroosh-nematollahi.mp3",
-					cover_art_url: "songs/path-to-cover-art2.jpg"
-				}
-			],
-			shuffle_on: false,
-			repeat: false
-		});
-
-        // Toggle the music player visibility
-        const floatingButton = document.getElementById('floating-button');
-        const musicPlayer = document.getElementById('music-player');
-        const minimizeButton = document.getElementById('minimize-button');
-
-        floatingButton.addEventListener('click', () => {
-            musicPlayer.style.display = 'flex';
-            floatingButton.style.display = 'none';
-        });
-
-        minimizeButton.addEventListener('click', () => {
-            musicPlayer.style.display = 'none';
-            floatingButton.style.display = 'block';
-        });
-
-// Then bind events
-Amplitude.bind('play', () => {
-    const playPauseButton = document.getElementById('play-pause-btn');
-    playPauseButton.textContent = '⏸'; // Pause icon
-});
-
-Amplitude.bind('pause', () => {
-    const playPauseButton = document.getElementById('play-pause-btn');
-    playPauseButton.textContent = '▶'; // Play icon
-});
-
-    </script>
-
-	</div>
+            Amplitude.bind('pause', () => {
+                playPauseButton.textContent = '▶'; // Play icon
+            });
+        </script>
+    </div>
 </div>
+
 
 
 	<!-- Current size and breakpoints indicator -->

@@ -806,68 +806,65 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script>
-        <script>
-            Amplitude.init({
-                songs: [
-                    {
-                        name: "Miserere Mei",
-                        artist: "Gregorio Allegri",
-                        url: "songs/miserere-tim-oldham.mp3",
-                        cover_art_url: "path-to-cover-art3.jpg"
-                    },
-                    {
-                        name: "Dies Irae",
-                        artist: "Thomas of Celano of the Franciscans",
-                        url: "songs/dies-irae-apashe.mp3",
-                        cover_art_url: "path-to-cover-art1.jpg"
-                    },
-                    {
-                        name: "Miserere Mei Remix",
-                        artist: "Gregorio Allegri",
-                        url: "songs/miserere-mei-remix-soroosh-nematollahi.mp3",
-                        cover_art_url: "songs/path-to-cover-art2.jpg"
-                    }
-                ],
-                shuffle_on: false,
-                repeat: false
-            });
+<script>
+    Amplitude.init({
+        songs: [
+            {
+                name: "Miserere Mei",
+                artist: "Gregorio Allegri",
+                url: "songs/miserere-tim-oldham.mp3",
+                cover_art_url: "path-to-cover-art3.jpg"
+            },
+            {
+                name: "Dies Irae",
+                artist: "Thomas of Celano of the Franciscans",
+                url: "songs/dies-irae-apashe.mp3",
+                cover_art_url: "path-to-cover-art1.jpg"
+            },
+            {
+                name: "Miserere Mei Remix",
+                artist: "Gregorio Allegri",
+                url: "songs/miserere-mei-remix-soroosh-nematollahi.mp3",
+                cover_art_url: "songs/path-to-cover-art2.jpg"
+            }
+        ],
+        shuffle_on: false,
+        repeat: false
+    });
 
-            // Floating button and music player toggle
-            const floatingButton = document.getElementById('floating-button');
-            const musicPlayer = document.getElementById('music-player');
-            const minimizeButton = document.getElementById('minimize-button');
+    // Floating button and music player toggle
+    const floatingButton = document.getElementById('floating-button');
+    const musicPlayer = document.getElementById('music-player');
+    const minimizeButton = document.getElementById('minimize-button');
+    const playPauseButton = document.getElementById('play-pause-btn');
 
-            floatingButton.addEventListener('click', () => {
-                musicPlayer.style.display = 'flex';
-                floatingButton.style.display = 'none';
-            });
+    floatingButton.addEventListener('click', () => {
+        musicPlayer.style.display = 'flex';
+        floatingButton.style.display = 'none';
+    });
 
-            minimizeButton.addEventListener('click', () => {
-                musicPlayer.style.display = 'none';
-                floatingButton.style.display = 'block';
-            });
+    minimizeButton.addEventListener('click', () => {
+        musicPlayer.style.display = 'none';
+        floatingButton.style.display = 'block';
+    });
 
-            const playPauseButton = document.getElementById('play-pause-btn');
+    // Update play/pause button text dynamically
+    const updatePlayPauseButton = () => {
+        if (Amplitude.getPlayerState() === 'playing') {
+            playPauseButton.textContent = '⏸'; // Update to Pause icon
+        } else {
+            playPauseButton.textContent = '▶'; // Update to Play icon
+        }
+    };
 
-            // Bind to the play event
-            Amplitude.on('play', () => {
-                playPauseButton.textContent = '⏸'; // Update to Pause icon
-            });
+    // Bind to Amplitude events
+    Amplitude.on('play', updatePlayPauseButton);
+    Amplitude.on('pause', updatePlayPauseButton);
 
-            // Bind to the pause event
-            Amplitude.on('pause', () => {
-                playPauseButton.textContent = '▶'; // Update to Play icon
-            });
+    // Ensure the button matches the initial state on page load
+    document.addEventListener('DOMContentLoaded', updatePlayPauseButton);
+</script>
 
-            // Ensure the initial state of the button matches the Amplitude state
-            document.addEventListener('DOMContentLoaded', () => {
-                if (Amplitude.getPlayerState() === 'playing') {
-                    playPauseButton.textContent = '⏸'; // Update to Pause icon
-                } else {
-                    playPauseButton.textContent = '▶'; // Update to Play icon
-                }
-            });
-        </script>
     </div>
 </div>
 

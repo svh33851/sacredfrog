@@ -804,7 +804,7 @@
 
 					<!-- Buttons -->
 					<button class="amplitude-prev">Prev</button>
-					<button id="play-pause-btn" class="amplitude-play-pause">▶</button>
+					<button id="play-pause-btn" class="amplitude-play-pause" amplitude-main-play-pause="true">▶</button>
 
 					<button class="amplitude-next">Next</button>
 					<input type="range" class="amplitude-volume-slider" step="0.1" min="0" max="1"><br>
@@ -821,31 +821,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script>
     <script>
-        // Initialize AmplitudeJS
-        Amplitude.init({
-            songs: [
-                {
-                    name: "Miserere Mei",
-                    artist: "Gregorio Allegri",
-                    url: "songs/miserere-tim-oldham.mp3",
-                    cover_art_url: "path-to-cover-art3.jpg"
-                },
-                {
-                    name: "Dies Irae",
-                    artist: "Thomas of Celano of the Franciscans",
-                    url: "songs/dies-irae-apashe.mp3",
-                    cover_art_url: "path-to-cover-art1.jpg"
-                },
-                {
-                    name: "Miserere Mei Remix",
-                    artist: "Gregorio Allegri",
-                    url: "songs/miserere-mei-remix-soroosh-nematollahi.mp3",
-                    cover_art_url: "songs/path-to-cover-art2.jpg"
-                }
-            ],
-            shuffle_on: false,
-            repeat: false
-        });
+
+		// Initialize AmplitudeJS first
+		Amplitude.init({
+			songs: [
+				{
+					name: "Miserere Mei",
+					artist: "Gregorio Allegri",
+					url: "songs/miserere-tim-oldham.mp3",
+					cover_art_url: "path-to-cover-art3.jpg"
+				},
+				{
+					name: "Dies Irae",
+					artist: "Thomas of Celano of the Franciscans",
+					url: "songs/dies-irae-apashe.mp3",
+					cover_art_url: "path-to-cover-art1.jpg"
+				},
+				{
+					name: "Miserere Mei Remix",
+					artist: "Gregorio Allegri",
+					url: "songs/miserere-mei-remix-soroosh-nematollahi.mp3",
+					cover_art_url: "songs/path-to-cover-art2.jpg"
+				}
+			],
+			shuffle_on: false,
+			repeat: false
+		});
+
+		// Then bind events
+		Amplitude.bind('play', () => {
+			const playPauseButton = document.getElementById('play-pause-btn');
+			playPauseButton.textContent = '⏸'; // Pause icon
+		});
+
+		Amplitude.bind('pause', () => {
+			const playPauseButton = document.getElementById('play-pause-btn');
+			playPauseButton.textContent = '▶'; // Play icon
+		});
 
         // Toggle the music player visibility
         const floatingButton = document.getElementById('floating-button');
@@ -861,18 +873,6 @@
             musicPlayer.style.display = 'none';
             floatingButton.style.display = 'block';
         });
-
-		// Select the play/pause button
-		const playPauseButton = document.getElementById('play-pause-btn');
-
-		// Listen for Amplitude events to update the button icon
-		Amplitude.bind('play', () => {
-			playPauseButton.textContent = '⏸'; // Pause icon
-		});
-
-		Amplitude.bind('pause', () => {
-			playPauseButton.textContent = '▶'; // Play icon
-		});
 
     </script>
 

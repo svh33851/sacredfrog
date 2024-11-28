@@ -863,17 +863,16 @@
             floatingButton.style.display = 'block';
         });
 
-		// Select the play/pause button
-		const playPauseButton = document.getElementById('play-pause-btn');
+// Then bind events
+Amplitude.bind('play', () => {
+    const playPauseButton = document.getElementById('play-pause-btn');
+    playPauseButton.textContent = '⏸'; // Pause icon
+});
 
-		// Listen for Amplitude events to update the button icon
-		Amplitude.bind('play', () => {
-			playPauseButton.textContent = '⏸'; // Pause icon
-		});
-
-		Amplitude.bind('pause', () => {
-			playPauseButton.textContent = '▶'; // Play icon
-		});
+Amplitude.bind('pause', () => {
+    const playPauseButton = document.getElementById('play-pause-btn');
+    playPauseButton.textContent = '▶'; // Play icon
+});
 
     </script>
 

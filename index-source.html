@@ -737,10 +737,46 @@
         #music-player {
             z-index: 9999;
         }
+
+		/* The following is to frame the player */
+		.frame-container {
+		  position: relative; /* Enables positioning for child elements */
+		  width: 300px; /* Same width as your div */
+		  height: 350px; /* Same height as your div */
+		}
+
+		.content {
+		  position: absolute; /* Aligns with the container */
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  background-color: white; /* Background color of the div (optional) */
+		  z-index: 1; /* Keeps it below the frame */
+		  padding: 20px; /* Optional padding inside the div */
+		  box-sizing: border-box;
+		  overflow: hidden; /* Prevents content from spilling outside */
+		}
+
+		.frame-overlay {
+		  position: absolute; /* Stacks over the content */
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  z-index: 2; /* Ensures the frame is on top */
+		  pointer-events: none; /* Allows clicking through to the content */
+		}
+
+
+
     </style>
 
     <!-- Floating Button -->
     <button id="floating-button">🎵</button>
+
+<div class="frame-container">
+  <div class="content">
 
     <!-- Popup Music Player -->
     <div id="music-player">
@@ -773,6 +809,10 @@
 
         </div>
     </div>
+
+  </div>
+  <img src="images/orig/player-frame-1.png" alt="Painting Frame" class="frame-overlay" />
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script>
     <script>

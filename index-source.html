@@ -766,7 +766,50 @@
             }
         </style>
 
+        <!-- Floating Button -->
+        <button id="floating-button">🎵</button>
 
+        <!-- Popup Music Player -->
+        <div id="music-player">
+            <div class="frame-container">
+                <div class="content">
+                    <div id="music-player-header">
+                        <h3>Music Player</h3>
+                        <button id="minimize-button">-</button>
+                    </div>
+
+                    <!-- Playlist -->
+                    <div id="playlist">
+                        <ul>
+                            <li amplitude-song-index="0">Song 1 - Artist 1</li>
+                            <li amplitude-song-index="1">Song 2 - Artist 2</li>
+                            <li amplitude-song-index="2">Song 3 - Artist 3</li>
+                        </ul>
+                    </div>
+
+                    <!-- Player Controls -->
+                    <div id="player">
+						<!-- Time, Seekbar, Duration -->
+						<div style="padding: 10px; text-align: center;">
+							<div>
+								<span id="current-time">0:00</span>
+								<progress id="song-progress" class="amplitude-song-played-progress" style="width: 70%; height: 10px;"></progress>
+								<span id="song-duration">0:00</span>
+							</div>
+						</div>
+
+                        <!-- Buttons -->
+                        <button class="amplitude-prev">Prev</button>
+                        <button id="play-pause-btn" class="amplitude-play-pause" amplitude-main-play-pause="true">▶</button>
+                        <button class="amplitude-next">Next</button>
+                        <input type="range" class="amplitude-volume-slider" step="0.1" min="0" max="1"><br>
+                        <button class="amplitude-shuffle">Shuffle</button>
+                        <button class="amplitude-repeat">Repeat</button>
+                    </div>
+                </div>
+            </div>
+            <img src="images/orig/frame-player-2.png" alt="Painting Frame" class="frame-overlay" />
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script>
 <script>
@@ -955,47 +998,6 @@ window.onload = updateBreakpoint;
 // Update on window resize
 window.onresize = updateBreakpoint;
 </script>
-
-
-<div id="music-player-container" style="width: 300px; height: 300px; border: 1px solid #ccc; border-radius: 10px; overflow: hidden; font-family: Arial, sans-serif;">
-    <!-- Playlist -->
-    <div id="playlist-container" style="height: 100px; overflow-y: auto; padding: 10px; background-color: #f9f9f9;">
-        <ul id="playlist" style="list-style-type: none; padding: 0; margin: 0;">
-            <li amplitude-song-index="0" style="padding: 5px; cursor: pointer;">Song 1 - Artist 1</li>
-            <li amplitude-song-index="1" style="padding: 5px; cursor: pointer;">Song 2 - Artist 2</li>
-            <li amplitude-song-index="2" style="padding: 5px; cursor: pointer;">Song 3 - Artist 3</li>
-        </ul>
-    </div>
-
-    <!-- Now Playing -->
-    <div style="padding: 10px; text-align: center;">
-        <div id="now-playing" style="font-weight: bold;">Now Playing: None</div>
-    </div>
-
-    <!-- Time, Seekbar, Duration -->
-    <div style="padding: 10px; text-align: center;">
-        <div>
-            <span id="current-time">0:00</span>
-            <progress id="song-progress" class="amplitude-song-played-progress" style="width: 70%; height: 10px;"></progress>
-            <span id="song-duration">0:00</span>
-        </div>
-    </div>
-
-    <!-- Controls -->
-    <div style="padding: 10px; text-align: center;">
-        <button class="amplitude-prev">⏮</button>
-        <button class="amplitude-play-pause" amplitude-main-play-pause="true">▶</button>
-        <button class="amplitude-next">⏭</button>
-    </div>
-
-    <!-- Volume and Shuffle -->
-    <div style="padding: 10px; text-align: center;">
-        <input type="range" class="amplitude-volume-slider" step="0.1" min="0" max="1" style="width: 60%;" />
-        <button class="amplitude-shuffle">🔀</button>
-    </div>
-</div>
-
-
 
 
 </body>

@@ -791,6 +791,10 @@
         #volume {
 			padding-left:10px;
 		}
+		
+		#volume-icon {
+			position:absolute;
+		}
 
         button {
 			background: #EB3C3C;
@@ -897,9 +901,9 @@
 					</div>
 
 					<!-- Volume Control -->
-					<span id="volume-icon" style="position:absolute;">🔊</span>
 					<div id="volume-control">
-						<input style="padding-left:20px;" type="range" id="volume" min="0" max="1" step="0.01" value="1">
+						<span id="volume-icon">🔊</span>
+						<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
 					</div>
 				</div>
 

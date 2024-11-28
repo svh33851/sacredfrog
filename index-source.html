@@ -782,7 +782,6 @@
             display: flex;
             justify-content: space-around;
             margin-bottom: 10px;
-            color:black;
         }
 
         button {
@@ -814,6 +813,41 @@
 			position:relative;
 			float:right;z-index:30;
 		}
+
+
+		/* The following is to style seekbar and volume control */
+		input[type="range"] {
+			-webkit-appearance: none;
+			width: 100%;
+			background: #8B0000; /* Dark red */
+			height: 5px;
+			cursor: pointer;
+			outline: none;
+		}
+
+		/* Thumb Styling */
+		input[type="range"]::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 12px;
+			height: 12px;
+			background: #B22222; /* Lighter red for contrast */
+			border-radius: 50%;
+		}
+
+		input[type="range"]::-moz-range-thumb {
+			width: 12px;
+			height: 12px;
+			background: #B22222;
+			border-radius: 50%;
+		}
+
+		input[type="range"]::-ms-thumb {
+			width: 12px;
+			height: 12px;
+			background: #B22222;
+			border-radius: 50%;
+		}
+
 
 	</style>
 

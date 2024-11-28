@@ -804,8 +804,7 @@
 
 					<!-- Buttons -->
 					<button class="amplitude-prev">Prev</button>
-<!-- Single Play/Pause Button -->
-<button id="play-pause-btn" class="amplitude-play-pause" amplitude-main-play-pause="true">▶</button>
+					<button id="play-pause-btn" class="amplitude-play-pause" amplitude-main-play-pause="true">▶</button>
 
 
 					<button class="amplitude-next">Next</button>
@@ -863,16 +862,34 @@
         floatingButton.style.display = 'block';
     });
 
-    // Play/Pause Button
-    const playPauseButton = document.getElementById('play-pause-btn');
+	document.addEventListener('DOMContentLoaded', () => {
+		const playPauseButton = document.getElementById('play-pause-btn');
 
-    Amplitude.bind('play', () => {
-        playPauseButton.textContent = '⏸'; // Update to Pause icon
-    });
+		// Bind to the play event
+		Amplitude.bind('play', () => {
+			playPauseButton.textContent = '⏸'; // Update to Pause icon
+		});
 
-    Amplitude.bind('pause', () => {
-        playPauseButton.textContent = '▶'; // Update to Play icon
-    });
+		// Bind to the pause event
+		Amplitude.bind('pause', () => {
+			playPauseButton.textContent = '▶'; // Update to Play icon
+		});
+
+		// Initialize AmplitudeJS
+		Amplitude.init({
+			// Configuration options here
+		});
+
+		// Ensure the initial state of the button matches the Amplitude state
+		if (Amplitude.getPlayerState() === 'playing') {
+			playPauseButton.textContent = '⏸'; // Update to Pause icon
+		} else {
+			playPauseButton.textContent = '▶'; // Update to Play icon
+		}
+	});
+
+
+
 </script>
 
 	</div>

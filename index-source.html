@@ -848,17 +848,6 @@
 			repeat: false
 		});
 
-		// Then bind events
-		Amplitude.bind('play', () => {
-			const playPauseButton = document.getElementById('play-pause-btn');
-			playPauseButton.textContent = '⏸'; // Pause icon
-		});
-
-		Amplitude.bind('pause', () => {
-			const playPauseButton = document.getElementById('play-pause-btn');
-			playPauseButton.textContent = '▶'; // Play icon
-		});
-
         // Toggle the music player visibility
         const floatingButton = document.getElementById('floating-button');
         const musicPlayer = document.getElementById('music-player');
@@ -873,6 +862,18 @@
             musicPlayer.style.display = 'none';
             floatingButton.style.display = 'block';
         });
+
+		// Select the play/pause button
+		const playPauseButton = document.getElementById('play-pause-btn');
+
+		// Listen for Amplitude events to update the button icon
+		Amplitude.bind('play', () => {
+			playPauseButton.textContent = '⏸'; // Pause icon
+		});
+
+		Amplitude.bind('pause', () => {
+			playPauseButton.textContent = '▶'; // Play icon
+		});
 
     </script>
 

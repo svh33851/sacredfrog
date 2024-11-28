@@ -686,6 +686,7 @@
 			flex-direction: column;
 		}
 
+<!--
 		#music-player-header {
 			display: flex;
 			justify-content: space-between;
@@ -749,6 +750,7 @@
 		#music-player {
 			z-index: 9999;
 		}
+-->
 
 		/* The following is to frame the player */
 		.frame-container {
@@ -779,6 +781,92 @@
 			z-index: 1002; /* Ensures the frame is on top */
 			pointer-events: none; /* Allows clicking through to the content */
 		}
+
+
+
+		/* The following is for the new player */
+        #player {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #playlist {
+            height: 100px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            padding: 5px;
+        }
+
+        #playlist ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #playlist li {
+            cursor: pointer;
+            padding: 5px;
+            margin: 2px 0;
+            transition: background-color 0.3s;
+        }
+
+        #playlist li:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        #playlist li.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        #now-playing {
+            padding: 5px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #time {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #seekbar {
+            width: 100%;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+
+
 	</style>
 
 	<!-- Floating Button -->
@@ -788,38 +876,39 @@
 	<div id="music-player">
 		<div class="frame-container">
 			<div class="content">
-				<div id="music-player-header">
-					<h3>Music Player</h3>
-					<button id="minimize-button">-</button>
-				</div>
 
-				<!-- Playlist -->
-				<div id="playlist-container" style="height: 100px; overflow-y: auto; padding: 10px; background-color: #f9f9f9;">
-					<ul id="playlist" style="list-style-type: none; padding: 0; margin: 0;">
-						<li amplitude-song-index="0" style="padding: 5px; cursor: pointer;">Song 1 - Artist 1</li>
-						<li amplitude-song-index="1" style="padding: 5px; cursor: pointer;">Song 2 - Artist 2</li>
-						<li amplitude-song-index="2" style="padding: 5px; cursor: pointer;">Song 3 - Artist 3</li>
-					</ul>
-				</div>
-
-				<!-- Now Playing -->
-				<div style="padding: 10px; text-align: center;">
-					<div id="now-playing" style="font-weight: bold;">Now Playing: None</div>
-				</div>
-
-				<!-- Player Controls -->
 				<div id="player">
-					<!-- Progress Bar -->
-					<progress class="amplitude-song-played-progress" id="song-progress"></progress>
+					<!-- Playlist -->
+					<div id="playlist">
+						<ul id="song-list">
+							<!-- Song List Will Be Populated Here -->
+						</ul>
+					</div>
 
-					<!-- Buttons -->
-					<button class="amplitude-prev">Prev</button>
-					<button id="play-pause-btn" class="amplitude-play-pause" amplitude-main-play-pause="true">▶</button>
-					<button class="amplitude-next">Next</button>
-					<input type="range" class="amplitude-volume-slider" step="0.1" min="0" max="1"><br>
-					<button class="amplitude-shuffle">Shuffle</button>
-					<button class="amplitude-repeat">Repeat</button>
+					<!-- Now Playing -->
+					<div id="now-playing">Now Playing: None</div>
+
+					<!-- Time, Seekbar, Duration -->
+					<div id="time">
+						<span id="current-time">0:00</span>
+						<input type="range" id="seekbar" value="0" max="100" step="1">
+						<span id="duration">0:00</span>
+					</div>
+
+					<!-- Playback Controls -->
+					<div id="controls">
+						<button id="prev">⏮</button>
+						<button id="play-pause">▶</button>
+						<button id="next">⏭</button>
+						<button id="shuffle">🔀</button>
+					</div>
+
+					<!-- Volume Control -->
+					<div id="volume-control">
+						<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+					</div>
 				</div>
+
 			</div>
 		</div>
 		<img src="images/orig/frame-player-2.png" alt="Painting Frame" class="frame-overlay" />
@@ -827,30 +916,6 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script>
 	<script>
-		Amplitude.init({
-			songs: [
-				{
-					name: "Miserere Mei",
-					artist: "Gregorio Allegri",
-					url: "songs/miserere-tim-oldham.mp3",
-					cover_art_url: "path-to-cover-art3.jpg"
-				},
-				{
-					name: "Dies Irae",
-					artist: "Thomas of Celano of the Franciscans",
-					url: "songs/dies-irae-apashe.mp3",
-					cover_art_url: "path-to-cover-art1.jpg"
-				},
-				{
-					name: "Miserere Mei Remix",
-					artist: "Gregorio Allegri",
-					url: "songs/miserere-mei-remix-soroosh-nematollahi.mp3",
-					cover_art_url: "songs/path-to-cover-art2.jpg"
-				}
-			],
-			shuffle_on: false,
-			repeat: false
-		});
 
 		// Floating button and music player toggle
 		const floatingButton = document.getElementById('floating-button');
@@ -867,26 +932,164 @@
 			floatingButton.style.display = 'block';
 		});
 
-		const playPauseButton = document.getElementById('play-pause-btn');
 
-		// Bind to the play event
-		Amplitude.on('play', () => {
-			playPauseButton.textContent = '⏸'; // Update to Pause icon
-		});
 
-		// Bind to the pause event
-		Amplitude.on('pause', () => {
-			playPauseButton.textContent = '▶'; // Update to Play icon
-		});
 
-		// Ensure the initial state of the button matches the Amplitude state
-		document.addEventListener('DOMContentLoaded', () => {
-			if (Amplitude.getPlayerState() === 'playing') {
-				playPauseButton.textContent = '⏸'; // Update to Pause icon
-			} else {
-				playPauseButton.textContent = '▶'; // Update to Play icon
-			}
-		});
+	// New music player
+    <script>
+        const audio = new Audio();
+        const songListElem = document.getElementById('song-list');
+        const nowPlayingElem = document.getElementById('now-playing');
+        const currentTimeElem = document.getElementById('current-time');
+        const durationElem = document.getElementById('duration');
+        const seekbar = document.getElementById('seekbar');
+        const playPauseButton = document.getElementById('play-pause');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const shuffleButton = document.getElementById('shuffle');
+        const volumeControl = document.getElementById('volume');
+
+        let songs = [];
+        let currentIndex = 0;
+        let isPlaying = false;
+        let isShuffling = false;
+
+        // Fetch songs from "songs/" folder
+        fetchSongs();
+
+        // Volume control
+        volumeControl.addEventListener('input', () => {
+            audio.volume = volumeControl.value;
+        });
+
+        // Play/Pause functionality
+        playPauseButton.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playPauseButton.textContent = '▶';
+            } else {
+                audio.play();
+                playPauseButton.textContent = '❚❚';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Previous song functionality
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+            loadSong();
+        });
+
+        // Next song functionality
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % songs.length;
+            loadSong();
+        });
+
+        // Shuffle functionality
+        shuffleButton.addEventListener('click', () => {
+            isShuffling = !isShuffling;
+            shuffleButton.style.backgroundColor = isShuffling ? '#28a745' : '#007bff';
+            if (isShuffling) {
+                shuffleSongs();
+            } else {
+                songs = [...songs];
+            }
+            loadSong();
+        });
+
+        // Seekbar functionality
+        audio.addEventListener('timeupdate', () => {
+            const currentTime = audio.currentTime;
+            const duration = audio.duration;
+            if (duration) {
+                currentTimeElem.textContent = formatTime(currentTime);
+                durationElem.textContent = formatTime(duration);
+                seekbar.value = (currentTime / duration) * 100;
+            }
+        });
+
+        // Seekbar input functionality
+        seekbar.addEventListener('input', () => {
+            const seekValue = seekbar.value / 100;
+            audio.currentTime = audio.duration * seekValue;
+        });
+
+        // Load song
+        function loadSong() {
+            audio.src = songs[currentIndex].url;
+            nowPlayingElem.textContent = `Now Playing: ${songs[currentIndex].name}`;
+            if (isPlaying) {
+                audio.play();
+            } else {
+                playPauseButton.textContent = '▶';
+            }
+            highlightCurrentSong();
+        }
+
+        // Format time in minutes:seconds
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Shuffle the playlist
+        function shuffleSongs() {
+            for (let i = songs.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [songs[i], songs[j]] = [songs[j], songs[i]];
+            }
+        }
+
+        // Highlight the current song in the playlist
+        function highlightCurrentSong() {
+            const songItems = document.querySelectorAll('#song-list li');
+            songItems.forEach((item, index) => {
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // Fetch songs from "songs/" folder
+        function fetchSongs() {
+            // Example of songs list. This should be dynamically generated or populated.
+            songs = [
+                { name: 'Song 1', url: 'songs/song1.mp3' },
+                { name: 'Song 2', url: 'songs/song2.mp3' },
+                { name: 'Song 3', url: 'songs/song3.mp3' }
+            ];
+
+            // Populate the playlist
+            songs.forEach((song, index) => {
+                const li = document.createElement('li');
+                li.textContent = song.name;
+                li.addEventListener('click', () => {
+                    currentIndex = index;
+                    loadSong();
+                });
+                songListElem.appendChild(li);
+            });
+
+            // When a song ends, load the next one
+            audio.addEventListener('ended', () => {
+                if (isShuffling) {
+                    currentIndex = Math.floor(Math.random() * songs.length);
+                } else {
+                    currentIndex = (currentIndex + 1) % songs.length;
+                }
+                loadSong();
+            });
+
+            loadSong();
+        }
+    </script>
+
+
+
 	</script>
 </div>
 

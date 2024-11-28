@@ -193,6 +193,38 @@
 		<div class="pure-u-1-1 pure-u-md-11-24">
 			<img class="stpepe-home" style="display: block; max-width: 100%; height: auto; z-index:0; width:100%; max-width:580px;" src="images/stpepe-home.webp"><br>
 		</div>
+
+<style>
+@-webkit-keyframes pulse {
+  0% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
+  50% { box-shadow:0 0 16px #ea4c89, inset 0 0 14px #ea4c89; }
+  100% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
+}
+
+.halo {
+	position:absolute;
+	z-index:1;
+  background-color:transparent;
+  width:100px;
+  height:100px;
+  border-radius:50px;
+  box-shadow: 0 0 8px #ea4c89, inset 0 0 8px #ea4c89;
+  -webkit-animation: pulse 2s linear 1s infinite;
+}
+.halo p {
+  display:block;
+  text-align: center;
+  line-height: 100px;
+  font-family:sans-serif;
+  font-weight:100;
+  font-size:24px;
+  color: #ea4c89;
+  text-shadow: 0 0 4px #ea4c89;
+}
+</style>
+<div class="halo"><p></p></div>
+
+
 		<div class="pure-u-1 pure-u-md-13-24 centered">
 			<div class="pure-g">
 				<div class="pure-u-1-1" style="margin-bottom:0;z-index:202;">
@@ -645,39 +677,6 @@
 	</div>
 </div>
 
-<style>
-@keyframes tronFilter {
-    0%, 100% {
-        -webkit-filter: drop-shadow(-0.75px 0px 6px #ffff33);
-        filter: drop-shadow(-0.75px 0px 6px #ffff33);
-        stroke: #ffff33; /* Bright yellow */
-    }
-    50% {
-        -webkit-filter: drop-shadow(-0.75px 0px 6px #ffcc00);
-        filter: drop-shadow(-0.75px 0px 6px #ffcc00);
-        stroke: #ffcc00; /* Darker yellow */
-    }
-}
-
-#gx-logo {
-    animation: tronFilter 3s infinite;
-    fill: #000000;
-    stroke: #666;
-    stroke-width: 5;
-    stroke-linecap: round;
-    stroke-linejoin: bevel;
-}
-</style>
-
-
-<div id="gx">
-<svg id="gx-logo" class="tronFilter" data-name="gx-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1095.45 1306.43">
-<polygon points="548.47 637.22 1095.45 0 918.95 0 547.72 455.56 176.49 0 0 0 546.97 637.22 546.97 638.97 547.72 638.09 548.47 638.97 548.47 637.22"/>
-<polygon points="548.47 669.22 1095.45 1306.43 918.95 1306.43 547.72 850.88 176.49 1306.43 0 1306.43 546.97 669.22 546.97 667.47 547.72 668.34 548.47 667.47 548.47 669.22"/>
-
-</svg>
-    
-</div>
 
 
 <div>

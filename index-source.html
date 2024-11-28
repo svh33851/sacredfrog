@@ -810,27 +810,49 @@
     Amplitude.init({
         songs: [
             {
-                name: "Miserere Mei",
-                artist: "Gregorio Allegri",
-                url: "songs/miserere-tim-oldham.mp3",
-                cover_art_url: "path-to-cover-art3.jpg"
+                name: "Song 1",
+                artist: "Artist 1",
+                url: "songs/song1.mp3",
+                cover_art_url: "path-to-cover-art1.jpg",
             },
             {
-                name: "Dies Irae",
-                artist: "Thomas of Celano of the Franciscans",
-                url: "songs/dies-irae-apashe.mp3",
-                cover_art_url: "path-to-cover-art1.jpg"
+                name: "Song 2",
+                artist: "Artist 2",
+                url: "songs/song2.mp3",
+                cover_art_url: "path-to-cover-art2.jpg",
             },
             {
-                name: "Miserere Mei Remix",
-                artist: "Gregorio Allegri",
-                url: "songs/miserere-mei-remix-soroosh-nematollahi.mp3",
-                cover_art_url: "songs/path-to-cover-art2.jpg"
-            }
+                name: "Song 3",
+                artist: "Artist 3",
+                url: "songs/song3.mp3",
+                cover_art_url: "path-to-cover-art3.jpg",
+            },
         ],
         shuffle_on: false,
-        repeat: false
     });
+
+    // Update the "Now Playing" text dynamically
+    Amplitude.on("song_change", () => {
+        const activeSong = Amplitude.getActiveSongMetadata();
+        document.getElementById("now-playing").textContent = `Now Playing: ${activeSong.name}`;
+    });
+
+    // Update the current time and duration
+    Amplitude.on("time_update", () => {
+        const currentTime = Amplitude.getSongPlayedSeconds();
+        const duration = Amplitude.getSongDuration();
+
+        document.getElementById("current-time").textContent = formatTime(currentTime);
+        document.getElementById("song-duration").textContent = formatTime(duration);
+    });
+
+    // Format time from seconds to MM:SS
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
+        return `${minutes}:${secs}`;
+    }
+
 
     // Floating button and music player toggle
     const floatingButton = document.getElementById('floating-button');
@@ -848,21 +870,7 @@
         floatingButton.style.display = 'block';
     });
 
-    // Update play/pause button text dynamically
-    const updatePlayPauseButton = () => {
-        if (Amplitude.getPlayerState() === 'playing') {
-            playPauseButton.textContent = '⏸'; // Update to Pause icon
-        } else {
-            playPauseButton.textContent = '▶'; // Update to Play icon
-        }
-    };
 
-    // Bind to Amplitude events
-    Amplitude.on('play', updatePlayPauseButton);
-    Amplitude.on('pause', updatePlayPauseButton);
-
-    // Ensure the button matches the initial state on page load
-    document.addEventListener('DOMContentLoaded', updatePlayPauseButton);
 </script>
 
     </div>
@@ -984,6 +992,48 @@ window.onload = updateBreakpoint;
 // Update on window resize
 window.onresize = updateBreakpoint;
 </script>
+
+
+<div id="music-player-container" style="width: 300px; height: 300px; border: 1px solid #ccc; border-radius: 10px; overflow: hidden; font-family: Arial, sans-serif;">
+    <!-- Playlist -->
+    <div id="playlist-container" style="height: 100px; overflow-y: auto; padding: 10px; background-color: #f9f9f9;">
+        <ul id="playlist" style="list-style-type: none; padding: 0; margin: 0;">
+            <li amplitude-song-index="0" style="padding: 5px; cursor: pointer;">Song 1 - Artist 1</li>
+            <li amplitude-song-index="1" style="padding: 5px; cursor: pointer;">Song 2 - Artist 2</li>
+            <li amplitude-song-index="2" style="padding: 5px; cursor: pointer;">Song 3 - Artist 3</li>
+        </ul>
+    </div>
+
+    <!-- Now Playing -->
+    <div style="padding: 10px; text-align: center;">
+        <div id="now-playing" style="font-weight: bold;">Now Playing: None</div>
+    </div>
+
+    <!-- Time, Seekbar, Duration -->
+    <div style="padding: 10px; text-align: center;">
+        <div>
+            <span id="current-time">0:00</span>
+            <progress id="song-progress" class="amplitude-song-played-progress" style="width: 70%; height: 10px;"></progress>
+            <span id="song-duration">0:00</span>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div style="padding: 10px; text-align: center;">
+        <button class="amplitude-prev">⏮</button>
+        <button class="amplitude-play-pause" amplitude-main-play-pause="true">▶</button>
+        <button class="amplitude-next">⏭</button>
+    </div>
+
+    <!-- Volume and Shuffle -->
+    <div style="padding: 10px; text-align: center;">
+        <input type="range" class="amplitude-volume-slider" step="0.1" min="0" max="1" style="width: 60%;" />
+        <button class="amplitude-shuffle">🔀</button>
+    </div>
+</div>
+
+
+
 
 </body>
 </html>

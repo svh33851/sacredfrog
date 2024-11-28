@@ -596,6 +596,211 @@
 		</div>
 
 
+
+
+
+
+
+
+
+
+<div class="pure-g" style="text-align:center; position:absolute;">
+	<div class="pure-u-1 pure-u-md-8-24">
+		<div id="music-player" style="width: 300px; height: 300px; border: 1px solid #ccc; border-radius: 10px; font-family: Arial, sans-serif; overflow: hidden;">
+			<!-- Playlist -->
+			<div id="playlist" style="height: 100px; overflow-y: auto; padding: 10px; background-color: #f1f1f1;">
+				<ul id="song-list" style="list-style-type: none; padding: 0; margin: 0;">
+					<li class="song" data-index="0">Song 1</li>
+					<li class="song" data-index="1">Song 2</li>
+					<li class="song" data-index="2">Song 3</li>
+				</ul>
+			</div>
+
+			<!-- Now Playing -->
+			<div style="padding: 10px; text-align: center;">
+				<div id="now-playing">Now Playing: None</div>
+			</div>
+
+			<!-- Time, Seekbar, Duration -->
+			<div style="padding: 10px; text-align: center;">
+				<div>
+					<span id="current-time">0:00</span>
+					<input type="range" id="seekbar" value="0" max="100" step="1" style="width: 70%;" />
+					<span id="duration">0:00</span>
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<div style="padding: 10px; text-align: center;">
+				<button id="prev">⏮</button>
+				<button id="play-pause">▶</button>
+				<button id="next">⏭</button>
+			</div>
+
+			<!-- Volume & Shuffle -->
+			<div style="padding: 10px; text-align: center;">
+				<input type="range" id="volume" min="0" max="1" step="0.01" value="1" style="width: 60%;" />
+				<button id="shuffle">🔀</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+	<style>
+#playlist li {
+    padding: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    margin: 2px 0;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+#playlist li:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="range"] {
+    margin-top: 5px;
+}
+	</style>
+
+<script>
+// Audio player initialization
+let audio = new Audio();
+let playlist = [
+    { name: "Song 1", url: "song1.mp3" },
+    { name: "Song 2", url: "song2.mp3" },
+    { name: "Song 3", url: "song3.mp3" }
+];
+let currentIndex = 0;
+let isPlaying = false;
+let isShuffle = false;
+
+// Elements
+let nowPlaying = document.getElementById("now-playing");
+let currentTimeElem = document.getElementById("current-time");
+let durationElem = document.getElementById("duration");
+let seekbar = document.getElementById("seekbar");
+let playPauseButton = document.getElementById("play-pause");
+let prevButton = document.getElementById("prev");
+let nextButton = document.getElementById("next");
+let volumeControl = document.getElementById("volume");
+let shuffleButton = document.getElementById("shuffle");
+let songList = document.getElementById("song-list");
+
+// Load the first song
+audio.src = playlist[currentIndex].url;
+nowPlaying.textContent = `Now Playing: ${playlist[currentIndex].name}`;
+
+// Play/Pause functionality
+playPauseButton.addEventListener("click", () => {
+    if (isPlaying) {
+        audio.pause();
+        playPauseButton.textContent = "▶";
+    } else {
+        audio.play();
+        playPauseButton.textContent = "❚❚";
+    }
+    isPlaying = !isPlaying;
+});
+
+// Previous Song functionality
+prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+    loadSong();
+});
+
+// Next Song functionality
+nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % playlist.length;
+    loadSong();
+});
+
+// Shuffle functionality
+shuffleButton.addEventListener("click", () => {
+    isShuffle = !isShuffle;
+    shuffleButton.style.backgroundColor = isShuffle ? "#0056b3" : "#007bff";
+});
+
+// Volume control
+volumeControl.addEventListener("input", () => {
+    audio.volume = volumeControl.value;
+});
+
+// Seekbar functionality
+audio.addEventListener("timeupdate", () => {
+    let currentTime = audio.currentTime;
+    let duration = audio.duration;
+
+    currentTimeElem.textContent = formatTime(currentTime);
+    durationElem.textContent = formatTime(duration);
+    seekbar.value = (currentTime / duration) * 100;
+});
+
+// Seekbar click functionality
+seekbar.addEventListener("input", () => {
+    let seekValue = seekbar.value / 100;
+    audio.currentTime = audio.duration * seekValue;
+});
+
+// Playlist song click functionality
+songList.addEventListener("click", (e) => {
+    if (e.target && e.target.nodeName === "LI") {
+        currentIndex = parseInt(e.target.getAttribute("data-index"));
+        loadSong();
+    }
+});
+
+// Load song
+function loadSong() {
+    audio.src = playlist[currentIndex].url;
+    nowPlaying.textContent = `Now Playing: ${playlist[currentIndex].name}`;
+    if (isPlaying) audio.play();
+    playPauseButton.textContent = "❚❚";
+}
+
+// Format time as minutes:seconds
+function formatTime(seconds) {
+    let mins = Math.floor(seconds / 60);
+    let secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+}
+
+// Initialize playlist
+let songItems = document.querySelectorAll(".song");
+songItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+        currentIndex = index;
+        loadSong();
+    });
+});
+
+</script>
+
+
+
+
+
+
+
+
 	</div>
 </div>
 
@@ -998,195 +1203,6 @@ window.onresize = updateBreakpoint;
 
 
 
-<div class="pure-g" style="text-align:center; position:absolute;">
-	<div class="pure-u-1 pure-u-md-8-24">
-		<div id="music-player" style="width: 300px; height: 300px; border: 1px solid #ccc; border-radius: 10px; font-family: Arial, sans-serif; overflow: hidden;">
-			<!-- Playlist -->
-			<div id="playlist" style="height: 100px; overflow-y: auto; padding: 10px; background-color: #f1f1f1;">
-				<ul id="song-list" style="list-style-type: none; padding: 0; margin: 0;">
-					<li class="song" data-index="0">Song 1</li>
-					<li class="song" data-index="1">Song 2</li>
-					<li class="song" data-index="2">Song 3</li>
-				</ul>
-			</div>
-
-			<!-- Now Playing -->
-			<div style="padding: 10px; text-align: center;">
-				<div id="now-playing">Now Playing: None</div>
-			</div>
-
-			<!-- Time, Seekbar, Duration -->
-			<div style="padding: 10px; text-align: center;">
-				<div>
-					<span id="current-time">0:00</span>
-					<input type="range" id="seekbar" value="0" max="100" step="1" style="width: 70%;" />
-					<span id="duration">0:00</span>
-				</div>
-			</div>
-
-			<!-- Controls -->
-			<div style="padding: 10px; text-align: center;">
-				<button id="prev">⏮</button>
-				<button id="play-pause">▶</button>
-				<button id="next">⏭</button>
-			</div>
-
-			<!-- Volume & Shuffle -->
-			<div style="padding: 10px; text-align: center;">
-				<input type="range" id="volume" min="0" max="1" step="0.01" value="1" style="width: 60%;" />
-				<button id="shuffle">🔀</button>
-			</div>
-		</div>
-
-	</div>
-</div>
-
-	<style>
-#playlist li {
-    padding: 5px;
-    cursor: pointer;
-    background-color: #fff;
-    margin: 2px 0;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s;
-}
-
-#playlist li:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-input[type="range"] {
-    margin-top: 5px;
-}
-	</style>
-
-<script>
-// Audio player initialization
-let audio = new Audio();
-let playlist = [
-    { name: "Song 1", url: "song1.mp3" },
-    { name: "Song 2", url: "song2.mp3" },
-    { name: "Song 3", url: "song3.mp3" }
-];
-let currentIndex = 0;
-let isPlaying = false;
-let isShuffle = false;
-
-// Elements
-let nowPlaying = document.getElementById("now-playing");
-let currentTimeElem = document.getElementById("current-time");
-let durationElem = document.getElementById("duration");
-let seekbar = document.getElementById("seekbar");
-let playPauseButton = document.getElementById("play-pause");
-let prevButton = document.getElementById("prev");
-let nextButton = document.getElementById("next");
-let volumeControl = document.getElementById("volume");
-let shuffleButton = document.getElementById("shuffle");
-let songList = document.getElementById("song-list");
-
-// Load the first song
-audio.src = playlist[currentIndex].url;
-nowPlaying.textContent = `Now Playing: ${playlist[currentIndex].name}`;
-
-// Play/Pause functionality
-playPauseButton.addEventListener("click", () => {
-    if (isPlaying) {
-        audio.pause();
-        playPauseButton.textContent = "▶";
-    } else {
-        audio.play();
-        playPauseButton.textContent = "❚❚";
-    }
-    isPlaying = !isPlaying;
-});
-
-// Previous Song functionality
-prevButton.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
-    loadSong();
-});
-
-// Next Song functionality
-nextButton.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % playlist.length;
-    loadSong();
-});
-
-// Shuffle functionality
-shuffleButton.addEventListener("click", () => {
-    isShuffle = !isShuffle;
-    shuffleButton.style.backgroundColor = isShuffle ? "#0056b3" : "#007bff";
-});
-
-// Volume control
-volumeControl.addEventListener("input", () => {
-    audio.volume = volumeControl.value;
-});
-
-// Seekbar functionality
-audio.addEventListener("timeupdate", () => {
-    let currentTime = audio.currentTime;
-    let duration = audio.duration;
-
-    currentTimeElem.textContent = formatTime(currentTime);
-    durationElem.textContent = formatTime(duration);
-    seekbar.value = (currentTime / duration) * 100;
-});
-
-// Seekbar click functionality
-seekbar.addEventListener("input", () => {
-    let seekValue = seekbar.value / 100;
-    audio.currentTime = audio.duration * seekValue;
-});
-
-// Playlist song click functionality
-songList.addEventListener("click", (e) => {
-    if (e.target && e.target.nodeName === "LI") {
-        currentIndex = parseInt(e.target.getAttribute("data-index"));
-        loadSong();
-    }
-});
-
-// Load song
-function loadSong() {
-    audio.src = playlist[currentIndex].url;
-    nowPlaying.textContent = `Now Playing: ${playlist[currentIndex].name}`;
-    if (isPlaying) audio.play();
-    playPauseButton.textContent = "❚❚";
-}
-
-// Format time as minutes:seconds
-function formatTime(seconds) {
-    let mins = Math.floor(seconds / 60);
-    let secs = Math.floor(seconds % 60);
-    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-}
-
-// Initialize playlist
-let songItems = document.querySelectorAll(".song");
-songItems.forEach((item, index) => {
-    item.addEventListener("click", () => {
-        currentIndex = index;
-        loadSong();
-    });
-});
-
-</script>
 
 
 

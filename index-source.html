@@ -649,230 +649,8 @@
 </div>
 
 
-
+<!-- Music player -->
 <div>
-	<style>
-		/* Floating button */
-		#floating-button {
-			position: fixed;
-			bottom: 20px;
-			left: 20px;
-			background-color: #007BFF;
-			color: #F8EEE5;
-			border: none;
-			border-radius: 50%;
-			width: 40px;
-			height: 40px;
-			font-size: 24px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
-			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-			z-index: 9998 !important;
-		}
-
-		#floating-button:hover {
-			background-color: #0056b3;
-		}
-
-		/* Popup music player */
-		#music-player {
-			position: fixed;
-			bottom: 40px;
-			left: 30px;
-			width: 268px;
-			height: 268px;
-			background-image: url(images/orig/bg-player-2.png);
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-			display: none;
-			flex-direction: column;
-			z-index: 9999;
-		}
-
-		/* The following is to frame the player */
-		.frame-container {
-			position: relative; /* Enables positioning for child elements */
-			width: 268px; /* Same width as your div */
-			height: 268px; /* Same height as your div */
-		}
-
-		.content {
-			position: absolute; /* Aligns with the container */
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 1; /* Keeps it below the frame */
-			margin-top: -7px;
-			padding: 0px 0px; /* Optional padding inside the div */
-			box-sizing: border-box;
-			overflow: hidden; /* Prevents content from spilling outside */
-		}
-
-		.frame-overlay {
-			position: absolute; /* Stacks over the content */
-			top: -43px;
-			left: -43px;
-			width: 352px;
-			height: 352px;
-			z-index: 1002; /* Ensures the frame is on top */
-			pointer-events: none; /* Allows clicking through to the content */
-		}
-
-
-		/* The following is for the new player */
-        #player {
-            width: 268px;
-            height: 268px;
-            border-radius: 10px;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        #playlist {
-            height: 95px;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            background-color: #241F1C;
-            padding: 5px;
-            margin-top: 5px;
-        }
-
-        #playlist ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        #playlist li {
-            cursor: pointer;
-            padding: 4px;
-            margin: 2px 0;
-            transition: background-color 0.3s;
-        }
-
-        #playlist li:hover {
-            background-color: #7F0000;
-            color: white;
-        }
-
-        #playlist li.active {
-            background-color: #C42121;
-            color: white;
-        }
-
-        #now-playing {
-			color: #241F1C;
-            padding: 0px;
-            text-align: center;
-            margin-bottom: 0px;
-        }
-
-        #time {
-			color: #241F1C;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        #duration, #current-time {
-		padding:0 10px;
-		}
-
-        #seekbar {
-            width: 100%;
-        }
-
-        #controls {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 10px;
-        }
-
-
-		#volume-icon {
-			position:absolute;
-			color: #8B0000;
-		}        
-
-        #volume {
-			position:relative;
-			width:90%;
-			margin-left:10%;
-		}
-
-
-        button {
-			background: #EB3C3C;
-			background-image: linear-gradient(to bottom, #EB3C3C, #850202);
-			text-shadow: 0px 0px 7px #000000;
-			font-family: Vinque, sans-serif;
-			color: #F8EEE5;
-			border-radius: 5px;
-			padding: 5px 8px;
-			text-decoration: none;
-			border:none;
-			cursor: pointer;
-        }
-
-        button:hover {
-			background: #D82C2C;
-			background-image: linear-gradient(to bottom, #D82C2C, #6D0000);
-			text-decoration: none;
-			cursor: pointer;
-        }
-
-        input[type="range"] {
-            width: 100%;
-        }
-
-		#minimize-button { 
-			padding:4px 9px;
-			position:relative;
-			float:right;z-index:30;
-		}
-
-
-		/* The following is to style seekbar and volume control */
-		input[type="range"] {
-			-webkit-appearance: none;
-			width: 100%;
-			background: #8B0000; /* Dark red */
-			height: 5px;
-			cursor: pointer;
-			outline: none;
-		}
-
-		/* Thumb Styling */
-		input[type="range"]::-webkit-slider-thumb {
-			-webkit-appearance: none;
-			width: 12px;
-			height: 12px;
-			background: #B22222; /* Lighter red for contrast */
-			border-radius: 50%;
-		}
-
-		input[type="range"]::-moz-range-thumb {
-			width: 12px;
-			height: 12px;
-			background: #B22222;
-			border-radius: 50%;
-		}
-
-		input[type="range"]::-ms-thumb {
-			width: 12px;
-			height: 12px;
-			background: #B22222;
-			border-radius: 50%;
-		}
-
-
-	</style>
-
 	<!-- Floating Button -->
 	<button id="floating-button">🎵</button>
 
@@ -922,7 +700,6 @@
 		<img src="images/orig/frame-player-2.png" alt="Painting Frame" class="frame-overlay" />
 	</div>
 
-	<script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script>
 	<script>
 
 		// Floating button and music player toggle
@@ -940,10 +717,6 @@
 			floatingButton.style.display = 'block';
 		});
 
-	</script>
-
-	
-    <script>
 		// New music player
         const audio = new Audio();
         const songListElem = document.getElementById('song-list');
@@ -1094,15 +867,8 @@
 
             loadSong();
         }
-    </script>
-
-
-
 	</script>
 </div>
-
-
-
 
 
 	<!-- Current size and breakpoints indicator -->

@@ -850,12 +850,12 @@
             const playPauseButton = document.getElementById('play-pause-btn');
 
             // Bind to the play event
-            Amplitude.bind('play', () => {
+            Amplitude.on('play', () => {
                 playPauseButton.textContent = '⏸'; // Update to Pause icon
             });
 
             // Bind to the pause event
-            Amplitude.bind('pause', () => {
+            Amplitude.on('pause', () => {
                 playPauseButton.textContent = '▶'; // Update to Play icon
             });
 
@@ -870,6 +870,7 @@
         </script>
     </div>
 </div>
+
 
 
 

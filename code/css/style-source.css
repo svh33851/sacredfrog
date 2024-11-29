@@ -33,14 +33,6 @@ a:active {
 
 }
 
-.icon {
-  font-family: 'Courier New', monospace, Arial, sans-serif; /* Courier ensures no color emojis */
-  font-size: inherit; /* Match surrounding text size */
-  color: inherit; /* Match surrounding text color */
-  text-decoration: none; /* Remove underlines or other styles */
-  line-height: 1; /* Prevent spacing issues */
-  display: inline-block; /* Ensure consistent alignment */
-}
 
 /* FONTS */
 

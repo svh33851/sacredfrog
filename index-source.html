@@ -355,15 +355,6 @@
 		</div>
 
 		<div class="pure-u-1 pure-u-lg-12-24">
-
-  <!-- Popup 1 -->
-  <label for="popup1-toggle" style="cursor: pointer; background: #007bff; color: white; padding: 10px; border-radius: 5px;">Open Popup 1</label>
-  <input id="popup1-toggle" type="checkbox" hidden>
-  <div style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border-radius: 10px;"
-       id="popup1">
-    <p>Popup 1 Content</p>
-    <label for="popup1-toggle" style="cursor: pointer; color: crimson;">Close</label>
-  </div>
 			<div>
 				<h2 class="golden-text" style="text-align:left;">Latest prayers</h2>
 				<p><button id="fetchButton" class="btn-normal" style="background-color: #28a745;">Read the latest prayers</button></p>
@@ -632,19 +623,7 @@
 				<a class="pure-menu-link" href="https://www.reddit.com/r/TheBookOfSaintPepe">Reddit</a>
 			</div>
 			<div class="pure-u-12-24 pure-u-md-8-24">
-
-
- <!-- Popup 1 -->
-  <label for="popup1-toggle" style="cursor: pointer; background: #007bff; color: white; padding: 10px; border-radius: 5px;">Open Popup 1</label>
-  <input id="popup1-toggle" type="checkbox" hidden>
-  <div style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border-radius: 10px; z-index:9000;"
-       id="popup1">
-    <p>Popup 1 Content</p>
-    <label for="popup1-toggle" style="cursor: pointer; color: crimson;">Close</label>
-  </div>
-
-
-				<a class="pure-menu-link" href="">Media Kit</a>
+				<button class="pure-menu-link" onclick="openPopup('popup1')">Media Kit</button>
 				<a class="pure-menu-link" href="https://www.dextools.io/app/en/token/bookofsaintpepe">DexTools</a>
 				<a class="pure-menu-link" href="https://dexscreener.com/solana/hvgiruddzzhzyrwnh2f3mcmrwaxmcnqsxcqqdtc64pja">Dex Screener</a>
 				<a class="pure-menu-link" href="https://raydium.io/swap/?inputMint=sol&outputMint=Et63bkNtgp7nyvBMBxjKGBCjxet9Hrvm7qXpjnYSbKGh">Raydium</a>
@@ -654,6 +633,19 @@
 		</div>
 
 	</div>
+</div>
+
+<!-- Popups -->
+<div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+<div id="popup1" class="popup">
+	<span class="close" onclick="closePopup()">&times;</span>
+	<p>This is the first popup content.</p>
+</div>
+
+<div id="popup2" class="popup">
+	<span class="close" onclick="closePopup()">&times;</span>
+	<p>This is the second popup content.</p>
 </div>
 
 
@@ -878,6 +870,20 @@
         }
 	</script>
 </div>
+
+
+    <script>
+		// Popups
+        function openPopup(id) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
+        }
+    </script>
 
 	<!-- Current size and breakpoints indicator -->
 	<div class="breakpoint-display" id="breakpointDisplay">Current Size: </div>

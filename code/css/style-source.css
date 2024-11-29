@@ -514,7 +514,11 @@ input[type="checkbox"] {
 
 
 
-
+/* POPUPS */
+#popup1-toggle:checked ~ #popup1,
+#popup2-toggle:checked ~ #popup2 {
+	display: block;
+}
 
 
 /* MUSIC PLAYER*/

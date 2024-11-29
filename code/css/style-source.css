@@ -516,7 +516,7 @@ input[type="checkbox"] {
         .popup { display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background: white; border: 1px solid #888; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
         .popup .close { float: right; cursor: pointer; }
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); }
-
+		.popup span { color: #241F1C; }
 
 /* MUSIC PLAYER*/
 

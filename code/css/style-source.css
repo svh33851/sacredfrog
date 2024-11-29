@@ -33,6 +33,15 @@ a:active {
 
 }
 
+.icon {
+  font-family: Arial, sans-serif; /* Universal fallback font */
+  font-size: inherit; /* Match surrounding text size */
+  color: inherit; /* Match surrounding text color */
+  text-decoration: none; /* Remove underlines or other styles */
+  line-height: 1; /* Prevent spacing issues */
+  display: inline-block; /* Ensure consistent alignment */
+}
+
 /* FONTS */
 
 @font-face {

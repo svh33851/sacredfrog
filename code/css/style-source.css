@@ -34,7 +34,7 @@ a:active {
 }
 
 .icon {
-  font-family: Arial, sans-serif; /* Universal fallback font */
+  font-family: 'Courier New', monospace, Arial, sans-serif; /* Courier ensures no color emojis */
   font-size: inherit; /* Match surrounding text size */
   color: inherit; /* Match surrounding text color */
   text-decoration: none; /* Remove underlines or other styles */

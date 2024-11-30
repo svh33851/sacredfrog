@@ -58,32 +58,7 @@
 
 
 	<style>
-		/* Ensure that hidden components are styled */
-		.stpepe-home {
-			margin-top: calc(-150px - 12%);
-			opacity: 0;
-			transition: opacity 0.1s ease-out;
-			display: block;
-		}
 
-		/* When the component is defined (fully loaded), make it visible */
-		.stpepe-home:not(:defined) {
-			opacity: 1;
-		}
-
-		.section-home {
-			opacity: 0;
-			transition: opacity 0.1s ease-out;
-			display: block;
-			height:100vh;
-		}
-
-		/* When the component is defined (fully loaded), make it visible */
-		.section-home:not(:defined) {
-			opacity: 1;
-		}
-
-		
 		@media (max-width: 767px) {
 			.stpepe-home {
 				margin-top: 0;
@@ -233,7 +208,7 @@
 					<div>
 						<div class="text-box" id="text-box-mobile" style="z-index:200; position:relative;">
 <!--
-							<img loading="lazy" class="desktop" src="images/dec-cross-round.webp" style="width: 3vw; height: auto; max-width: 90px; min-width:30px; margin: -4vw 0 0 40%;position:absolute;z-index:201;">
+							<img class="desktop" src="images/dec-cross-round.webp" style="width: 3vw; height: auto; max-width: 90px; min-width:30px; margin: -4vw 0 0 40%;position:absolute;z-index:201;">
 -->
 							<p style="margin: -1% 0 0 0;">❝Blessed are the followers of <b>Saint Pepe</b>, for they shall receive <b>meme miracles</b>, find joy in simplicity, and be uplifted in unity.❞</p>
 						</div>

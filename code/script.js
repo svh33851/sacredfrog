@@ -153,12 +153,15 @@ volumeControl.addEventListener('input', () => {
 
 // Play/Pause functionality
 playPauseButton.addEventListener('click', () => {
-	if (isPlaying) {
-		audio.pause();
-		playPauseButton.textContent = '▶';
-	} else {
+	if (!isPlaying) {
+		if (!audio.src) {
+			audio.src = songs[currentIndex].url;
+		}
 		audio.play();
 		playPauseButton.textContent = '❚❚';
+	} else {
+		audio.pause();
+		playPauseButton.textContent = '▶';
 	}
 	isPlaying = !isPlaying;
 });
@@ -206,14 +209,14 @@ seekbar.addEventListener('input', () => {
 
 // Load song
 function loadSong() {
-	audio.src = songs[currentIndex].url;
 	nowPlayingElem.textContent = `Now Playing: ${songs[currentIndex].name}`;
+	highlightCurrentSong();
 	if (isPlaying) {
+		audio.src = songs[currentIndex].url;
 		audio.play();
 	} else {
 		playPauseButton.textContent = '▶';
 	}
-	highlightCurrentSong();
 }
 
 // Format time in minutes:seconds
@@ -223,7 +226,7 @@ function formatTime(seconds) {
 	return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// Shuffle the playlist
+// Shuffle playlist
 function shuffleSongs() {
 	for (let i = songs.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
@@ -273,25 +276,4 @@ function fetchSongs() {
 		}
 		loadSong();
 	});
-
-	loadSong();
-}
-
-// COPY CA BUTTON
-function copyText(button) {
-	const contractAddress = "Et63bkNtgp7nyvBMBxjKGBCjxet9Hrvm7qXpjnYSbKGh";
-	navigator.clipboard.writeText(contractAddress)
-		.then(() => {
-			button.textContent = "Copied!";
-			
-			const confirmationDiv = document.getElementById("confirmation");
-			confirmationDiv.textContent = `Make sure the Contract Address (CA) you copied is exactly "${contractAddress}" and that you are using the Solana Network.`;
-			confirmationDiv.style.display = "block";
-
-			setTimeout(() => {
-				button.textContent = "Copy Contract Address";
-				confirmationDiv.style.display = "none";
-			}, 50000);
-		})
-		.catch(err => console.error("Failed to copy:", err));
 }

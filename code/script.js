@@ -277,3 +277,22 @@ function fetchSongs() {
 		loadSong();
 	});
 }
+
+// COPY CA BUTTON
+function copyText(button) {
+	const contractAddress = "Et63bkNtgp7nyvBMBxjKGBCjxet9Hrvm7qXpjnYSbKGh";
+	navigator.clipboard.writeText(contractAddress)
+		.then(() => {
+			button.textContent = "Copied!";
+
+			const confirmationDiv = document.getElementById("confirmation");
+			confirmationDiv.textContent = `Make sure the Contract Address (CA) you copied is exactly "${contractAddress}" and that you are using the Solana Network.`;
+			confirmationDiv.style.display = "block";
+
+			setTimeout(() => {
+				button.textContent = "Copy Contract Address";
+				confirmationDiv.style.display = "none";
+			}, 50000);
+		})
+		.catch(err => console.error("Failed to copy:", err));
+}
